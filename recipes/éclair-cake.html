@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclair Cake - Recipes</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f5f1ea;
+            --surface: #fffdf8;
+            --text: #24211d;
+            --muted: #665c51;
+            --border: #ddd3c6;
+            --link: #8a4b2b;
+            --link-hover: #64351f;
+            --shadow: 0 12px 30px rgba(61, 43, 28, 0.08);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 32px 20px 28px;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            margin: 10px 0 14px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .page-header {
+            margin-bottom: 24px;
+        }
+        .recipe-title {
+            margin: 0 0 18px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            font-size: 1.6rem;
+        }
+        .recipe-image {
+            display: block;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            margin: 18px 0 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow);
+        }
+        .description { color: var(--muted); font-style: normal; margin-bottom: 20px; max-width: 70ch; }
+        .section {
+            margin-bottom: 28px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        h3 {
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin-top: 0;
+        }
+        .recipe-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 14px;
+            color: var(--link);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        .recipe-link:hover {
+            color: var(--link-hover);
+            border-color: var(--link);
+        }
+        body.dark-mode {
+            --bg: #14110f;
+            --surface: #1c1815;
+            --text: #f4ece2;
+            --muted: #c5b8ab;
+            --border: #3a3028;
+            --link: #f0a56f;
+            --link-hover: #ffbd89;
+            --shadow: none;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        body.dark-mode .recipe-image { border-color: rgba(255, 255, 255, 0.08); }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        .theme-toggle:hover { border-color: var(--link); }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+        }
+        .site-nav a,
+        .site-footer a {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+        .site-nav span {
+            color: var(--link);
+        }
+        .site-nav a:hover,
+        .site-footer a:hover {
+            color: var(--link-hover);
+        }
+        .site-nav .current {
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .site-footer {
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+    <main>
+        <div class="page-header">
+            <h1>Recipes</h1>
+            <nav class="site-nav" aria-label="Site navigation">
+                <a href="../index.html">Home</a>
+            </nav>
+        </div>
+        <h2 class="recipe-title">Éclair Cake</h2>
+        
+        <img src="../Éclair Cake.webp" alt="Éclair Cake" class="recipe-image">
+        
+        <div class="description">Lush and creamy, éclair cake is a dessert popular in the Midwest and beyond that’s perfect for any gathering, celebration or potluck. Inspired by the flavors of the classic French éclair pastry, this no-bake American iteration is reminiscent of an icebox cake. Typically, graham crackers are softened under layers of a pillowy smooth mix of vanilla pudding and whipped topping, and covered with rich chocolate. This version uses homemade crème légère (a fluffy mix of pastry cream and whipped cream) and a simple homemade semi-sweet chocolate ganache. The crème légère might sound fussy, but the preparation here is streamlined (no tempering of eggs required) and makes for a just-sweet-enough creamy filling. (Of course, in a pinch, you can swap in store-bought pudding and whipped topping.) Éclair cake needs chilling time, which makes it a great make-ahead dessert, and is best served after 24 hours in the fridge.</div>
+
+        <div class="section">
+            <h3>Ingredients</h3>
+            <ul>
+                
+                <li>2 tablespoons cold/28 grams unsalted butter, cut into 2 pieces</li>
+                
+                <li>½ cup/100 grams granulated sugar</li>
+                
+                <li>1 vanilla bean or 1 tablespoon pure vanilla extract</li>
+                
+                <li>¼ cup/32 grams cornstarch</li>
+                
+                <li>4 large egg yolks</li>
+                
+                <li>2 cups whole milk</li>
+                
+                <li>15 graham cracker sheets (225 grams)</li>
+                
+                <li>2 cups heavy cream</li>
+                
+                <li>3 tablespoons/23 grams powdered sugar</li>
+                
+                <li>8 ounces/227 grams semi-sweet chocolate (two 4-ounce baking bars), very finely chopped (see Tip)</li>
+                
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Instructions</h3>
+            <ol>
+                
+                <li>
+                    Add the butter to a large bowl; place a fine-mesh strainer over it and set aside.
+                </li>
+                
+                <li>
+                    Place the granulated sugar in a medium (2-quart) saucepan. If using the vanilla bean, split the bean in half lengthwise, scrape out the seeds and add to the sugar (reserve the pod for another use (see Tip); if using vanilla extract, that will be added in Step 6).
+                </li>
+                
+                <li>
+                    Add the cornstarch and egg yolks and whisk vigorously until smooth, creamy and pale yellow, about 1 minute. Slowly drizzle in the milk while gently whisking until combined.
+                </li>
+                
+                <li>
+                    Cook the mixture over medium heat, whisking constantly, until it starts to thicken, 5 to 10 minutes. It will first look light and foamy on top. Around the 6-minute mark, the foam will subside and the color will be pale yellow. After that, it will thicken quickly and large bubbles will pop up.
+                </li>
+                
+                <li>
+                    As soon as you see the large bubbles, whisk for another 30 seconds, then remove from heat (it will continue to thicken as it cools) and immediately pour the mixture through the strainer that’s set over the butter, scraping any clinging to the underside of the strainer into the bowl.
+                </li>
+                
+                <li>
+                    Add the vanilla extract if using instead of the seeds, and whisk until smooth. Place a piece of plastic wrap directly over the surface so the pastry cream doesn’t form a skin. Refrigerate until completely chilled, at least 2 hours. Pastry cream can be refrigerated for up to 3 days.
+                </li>
+                
+                <li>
+                    Remove the chilled pastry cream from the fridge and set aside. Line a 9-by-13-inch baking dish with whole graham crackers, breaking up sheets into individual crackers as needed to completely cover the bottom of the dish.
+                </li>
+                
+                <li>
+                    In the bowl of a stand mixer fitted with the whisk attachment (or using a bowl and hand mixer or a whisk), combine 1 cup of the heavy cream with the powdered sugar, whisking on medium-high just until stiff peaks form, 90 seconds to 2 minutes.
+                </li>
+                
+                <li>
+                    Using a whisk, give the pastry cream a thorough stir to smooth out any lumps, then gently fold in half the whipped cream using a rubber spatula. When combined, repeat with the remaining whipped cream.
+                </li>
+                
+                <li>
+                    Using an offset spatula, evenly spread half of the crème légère (the mix of pastry cream and whipped cream) on top of the graham crackers. Place another layer of graham crackers over the cream to evenly cover. Spread the remaining crème légère evenly on top. Cover the dish with plastic wrap and refrigerate for 1 hour for the crème légère to set and for the graham crackers to begin to soften.
+                </li>
+                
+                <li>
+                    When the crème légère is set, prepare the chocolate ganache: Place the chocolate in a medium heat-proof glass or metal bowl. In a small saucepan, bring the remaining 1 cup heavy cream to a simmer over medium heat, stirring constantly with a rubber spatula. The cream is ready when you start to see small bubbles appear around the sides, 4 to 5 minutes. Do not overheat the cream or allow it to come to a boil (see Tip).
+                </li>
+                
+                <li>
+                    Pour the warm cream over the chopped chocolate but do not stir; let stand for 5 to 10 minutes, depending on how finely the chocolate is chopped. Then use the spatula to gently stir the melted chocolate into the cream until combined, smooth and shiny.
+                </li>
+                
+                <li>
+                    Remove the eclair cake from the refrigerator and pour the chocolate ganache on top, using an offset spatula to spread evenly. Cover again with plastic wrap, making sure the cover doesn’t touch the chocolate topping, and refrigerate for at least 6 hours and up to 48 hours. You want the graham crackers to soften and for the crème légère and chocolate topping to set. For the cleanest cuts, use a sharp knife, dipping it in hot water and wiping the blade dry as you slice the cake.
+                </li>
+                
+            </ol>
+        </div>
+
+        
+        <a href="https://cooking.nytimes.com/recipes/1025993-eclair-cake" class="recipe-link" target="_blank" rel="noopener noreferrer">View Original Recipe</a>
+        
+    </main>
+
+    <footer class="site-footer">
+        By roof12.cloud
+    </footer>
+
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeToggle').textContent = 'Light Mode';
+        }
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeToggle').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>
