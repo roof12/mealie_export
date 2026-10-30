@@ -84,6 +84,80 @@
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
+        .hero {
+            margin: 0 0 32px;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .hero-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background-color: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .hero-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--link);
+        }
+        .hero-card-link {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+        .hero-image {
+            display: block;
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 8px;
+            padding: 16px 18px 20px;
+        }
+        .hero-body h2 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .hero-body .description {
+            margin: 0;
+        }
+        .hero-cta {
+            margin-top: auto;
+            padding-top: 4px;
+            color: var(--link);
+            font-size: 0.95rem;
+            text-decoration: underline;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+        .hero-card:hover .hero-cta {
+            color: var(--link-hover);
+        }
+        .section-title {
+            margin: 0 0 16px;
+            font-size: 1.25rem;
+        }
+
         /* Dark mode styles */
         body.dark-mode {
             --bg: #14110f;
@@ -191,21 +265,81 @@
                 <span class="current">Home</span>
             </nav>
         </div>
+        
+        
+        
+        
+            
+            
+        
+            
+            
+        
+
+        
+        <section class="hero" aria-label="Featured recipes">
+            <span class="hero-eyebrow">Featured recipes</span>
+            <div class="hero-grid">
+                
+                    
+                    
+                <article class="hero-card">
+                    <a class="hero-card-link" href="recipes/gochujang-butter-braised-tofu.html">
+                        
+                        <img src="https://assets.bonappetit.com/photos/65e602cfab2dec7b920687be/16:9/w_7984,h_4491,c_limit/20240118-0424-DIS-507.jpg" alt="Gochujang-Butter-Braised Tofu" class="hero-image">
+                        
+                        <div class="hero-body">
+                            <h2>Gochujang-Butter-Braised Tofu</h2>
+                            
+                            <p class="description">This deeply savory main is so easy and lightning fast, it gets dinner on the table in less than the time it takes to make rice.</p>
+                            
+                            <span class="hero-cta">View recipe</span>
+                        </div>
+                    </a>
+                </article>
+                
+                    
+                    
+                <article class="hero-card">
+                    <a class="hero-card-link" href="recipes/braised-pork-chops-with-tomatoes,-anchovies-and-rosemary.html">
+                        
+                        <img src="https://static01.nyt.com/images/2014/04/17/dining/-Braised-Pork-Chops/-Braised-Pork-Chops-facebookJumbo-v2.jpg" alt="Braised Pork Chops With Tomatoes, Anchovies and Rosemary" class="hero-image">
+                        
+                        <div class="hero-body">
+                            <h2>Braised Pork Chops With Tomatoes, Anchovies and Rosemary</h2>
+                            
+                            <p class="description">This is the sort of thing to make when you long for a satisfying, braised beef pot roast, but you don't have the several hours required. Here, pork chops are seared until they're mahogany in color, then tossed in with a quick sauce of tomatoes, garlic, rosemary and anchovies. The whole mess goes in to the oven for about 15 minutes until the chops are cooked through. Don't be put off by the anchovies; they will magically melt into the sauce.</p>
+                            
+                            <span class="hero-cta">View recipe</span>
+                        </div>
+                    </a>
+                </article>
+                
+            </div>
+        </section>
+        
+
         <p class="intro">The recipes and photos are not mine. A link to the originals is included where known.</p>
 
         
+        <h2 class="section-title">More recipes</h2>
+        
+        
             
-        <div class="recipe" id="dutch-baby">
-            <h2><a href="recipes/dutch-baby.html">Dutch Baby</a></h2>
+            
+        <div class="recipe" id="zdutch-baby">
+            <h2><a href="recipes/zdutch-baby.html">zDutch Baby</a></h2>
             
             <div class="description">This large, fluffy pancake is excellent for breakfast, brunch, lunch and dessert any time of year. And it comes together in about five blessed minutes. Just dump all of the ingredients into a blender, give it a good whirl, pour it into a heated skillet sizzling with butter and pop it into the oven. Twenty-five minutes later? Bliss. It's wonderful simply with sugar, syrup or preserves, but you also can serve it with fresh berries and whipped cream, apple slices cooked in butter and sugar or banana slices lightly cooked then dusted with brown sugar. When making a Dutch baby, there are a few keys to success: Do not let the butter burn; be sure your eggs and milk are at room temperature for maximum poof; and bring it to the table right away for everyone to admire (it deflates fast!). Click here for more baking recipes.</div>
             
 
             
-            <img src="Dutch Baby.webp" alt="Dutch Baby" class="recipe-image">
+            <img src="zDutch Baby.webp" alt="zDutch Baby" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="challah-bread">
             <h2><a href="recipes/challah-bread.html">Challah Bread</a></h2>
@@ -217,7 +351,9 @@
             <img src="Challah Bread.webp" alt="Challah Bread" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="éclair-cake">
             <h2><a href="recipes/éclair-cake.html">Éclair Cake</a></h2>
@@ -229,7 +365,9 @@
             <img src="Éclair Cake.webp" alt="Éclair Cake" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="homemade-protein-bars">
             <h2><a href="recipes/homemade-protein-bars.html">Homemade Protein Bars</a></h2>
@@ -241,7 +379,9 @@
             <img src="Homemade Protein Bars.webp" alt="Homemade Protein Bars" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="butter-rice-cakes">
             <h2><a href="recipes/butter-rice-cakes.html">Butter Rice Cakes</a></h2>
@@ -253,7 +393,9 @@
             <img src="Butter Rice Cakes.webp" alt="Butter Rice Cakes" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="lemon-ricotta-cake">
             <h2><a href="recipes/lemon-ricotta-cake.html">Lemon Ricotta Cake</a></h2>
@@ -265,7 +407,9 @@
             <img src="Lemon Ricotta Cake.webp" alt="Lemon Ricotta Cake" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="hot-milk-cake">
             <h2><a href="recipes/hot-milk-cake.html">Hot Milk Cake</a></h2>
@@ -277,7 +421,9 @@
             <img src="Hot Milk Cake.webp" alt="Hot Milk Cake" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="peanut-butter-miso-cookies">
             <h2><a href="recipes/peanut-butter-miso-cookies.html">Peanut Butter-Miso Cookies</a></h2>
@@ -289,7 +435,9 @@
             <img src="https://static01.nyt.com/images/2019/10/16/dining/kc-miso-peanut-butter-cookies/merlin_162369633_695e5669-961b-4a3d-97b3-a3086043edd3-videoSixteenByNineJumbo1600.jpg" alt="Peanut Butter-Miso Cookies" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="gochujang-caramel-cookies">
             <h2><a href="recipes/gochujang-caramel-cookies.html">Gochujang Caramel Cookies</a></h2>
@@ -301,7 +449,9 @@
             <img src="Gochujang Caramel Cookies.webp" alt="Gochujang Caramel Cookies" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="vegan-quiche">
             <h2><a href="recipes/vegan-quiche.html">Vegan Quiche</a></h2>
@@ -313,7 +463,9 @@
             <img src="Vegan Quiche.webp" alt="Vegan Quiche" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="easy-banana-bread-(classic-banana-bread)">
             <h2><a href="recipes/easy-banana-bread-(classic-banana-bread).html">Easy Banana Bread (Classic Banana Bread)</a></h2>
@@ -325,7 +477,9 @@
             <img src="Easy Banana Bread Classic Banana Bread.webp" alt="Easy Banana Bread (Classic Banana Bread)" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="my-favorite-banana-bread-(sally's)">
             <h2><a href="recipes/my-favorite-banana-bread-(sally's).html">My Favorite Banana Bread (Sally's)</a></h2>
@@ -337,7 +491,9 @@
             <img src="My Favorite Banana Bread Sallys.webp" alt="My Favorite Banana Bread (Sally's)" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="instant-pot-potato-soup">
             <h2><a href="recipes/instant-pot-potato-soup.html">Instant Pot Potato Soup</a></h2>
@@ -349,7 +505,9 @@
             <img src="Instant Pot Potato Soup.webp" alt="Instant Pot Potato Soup" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="miso-sesame-vinaigrette-that’s-good-on-anything">
             <h2><a href="recipes/miso-sesame-vinaigrette-that’s-good-on-anything.html">Miso-Sesame Vinaigrette That’s Good on Anything</a></h2>
@@ -361,7 +519,9 @@
             <img src="Miso-Sesame Vinaigrette Thats Good on Anything.webp" alt="Miso-Sesame Vinaigrette That’s Good on Anything" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="highlander-shortbreads">
             <h2><a href="recipes/highlander-shortbreads.html">Highlander Shortbreads</a></h2>
@@ -373,7 +533,9 @@
             <img src="Highlander Shortbreads.webp" alt="Highlander Shortbreads" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="cinna-buns">
             <h2><a href="recipes/cinna-buns.html">Cinna-Buns</a></h2>
@@ -385,7 +547,9 @@
             <img src="Cinna-Buns.webp" alt="Cinna-Buns" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="rugelach-cookies-with-cream-cheese-dough">
             <h2><a href="recipes/rugelach-cookies-with-cream-cheese-dough.html">Rugelach Cookies with Cream Cheese Dough</a></h2>
@@ -397,7 +561,9 @@
             <img src="Rugelach Cookies with Cream Cheese Dough.webp" alt="Rugelach Cookies with Cream Cheese Dough" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="homemade-artisan-bread-recipe">
             <h2><a href="recipes/homemade-artisan-bread-recipe.html">Homemade Artisan Bread Recipe</a></h2>
@@ -409,7 +575,9 @@
             <img src="Homemade Artisan Bread Recipe.webp" alt="Homemade Artisan Bread Recipe" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="homemade-ciabatta-bread">
             <h2><a href="recipes/homemade-ciabatta-bread.html">Homemade Ciabatta Bread</a></h2>
@@ -421,7 +589,9 @@
             <img src="Homemade Ciabatta Bread.webp" alt="Homemade Ciabatta Bread" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="homemade-bagels-recipe">
             <h2><a href="recipes/homemade-bagels-recipe.html">Homemade Bagels Recipe</a></h2>
@@ -433,7 +603,9 @@
             <img src="Homemade Bagels Recipe.webp" alt="Homemade Bagels Recipe" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="homemade-glazed-doughnuts">
             <h2><a href="recipes/homemade-glazed-doughnuts.html">Homemade Glazed Doughnuts</a></h2>
@@ -445,7 +617,9 @@
             <img src="Homemade Glazed Doughnuts.webp" alt="Homemade Glazed Doughnuts" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="pasta-with-miso,-parmesan-and-pickled-peppers">
             <h2><a href="recipes/pasta-with-miso,-parmesan-and-pickled-peppers.html">Pasta With Miso, Parmesan and Pickled Peppers</a></h2>
@@ -457,7 +631,9 @@
             <img src="https://static01.nyt.com/images/2025/10/15/multimedia/15FD-APPETITEREX-MC-Midnight-Pasta-Miso-Parmesan-Jalapeno-vbjf/08FD-APPETITEREX-MC-Midnight-Pasta-Miso-Parmesan-Jalapeno-vbjf-videoSixteenByNineJumbo1600.jpg" alt="Pasta With Miso, Parmesan and Pickled Peppers" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="chewy-molasses-cookies">
             <h2><a href="recipes/chewy-molasses-cookies.html">Chewy Molasses Cookies</a></h2>
@@ -469,7 +645,9 @@
             <img src="https://assets.bonappetit.com/photos/6377b82ca0fc58afb8d11600/4:3/w_2136,h_1602,c_limit/1118-ba-molasses-cookies-lede.jpg" alt="Chewy Molasses Cookies" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="lemon-miso-tofu-with-broccoli">
             <h2><a href="recipes/lemon-miso-tofu-with-broccoli.html">Lemon-Miso Tofu With Broccoli</a></h2>
@@ -481,7 +659,9 @@
             <img src="https://static01.nyt.com/images/2025/06/06/multimedia/hm-lemon-miso-tofu-mqjh/hm-lemon-miso-tofu-mqjh-videoSixteenByNineJumbo1600.jpg" alt="Lemon-Miso Tofu With Broccoli" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="minty-lime-bars">
             <h2><a href="recipes/minty-lime-bars.html">Minty Lime Bars</a></h2>
@@ -493,7 +673,9 @@
             <img src="https://static01.nyt.com/images/2021/12/08/dining/08COOKIESREX3-LIMEBAR/merlin_198248754_cb938f1b-fd1d-4876-a04a-86abd0d4c399-videoSixteenByNineJumbo1600.jpg" alt="Minty Lime Bars" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="cranberry-tiramisù">
             <h2><a href="recipes/cranberry-tiramisù.html">Cranberry Tiramisù</a></h2>
@@ -505,7 +687,9 @@
             <img src="Cranberry Tiramisù.webp" alt="Cranberry Tiramisù" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="skillet-braised-pork-chops">
             <h2><a href="recipes/skillet-braised-pork-chops.html">Skillet Braised Pork Chops</a></h2>
@@ -517,7 +701,9 @@
             <img src="Skillet Braised Pork Chops.webp" alt="Skillet Braised Pork Chops" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="skillet-cornbread">
             <h2><a href="recipes/skillet-cornbread.html">Skillet Cornbread</a></h2>
@@ -529,7 +715,9 @@
             <img src="Skillet Cornbread.webp" alt="Skillet Cornbread" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="baked-lemon-pudding">
             <h2><a href="recipes/baked-lemon-pudding.html">Baked Lemon Pudding</a></h2>
@@ -541,7 +729,9 @@
             <img src="Baked Lemon Pudding.webp" alt="Baked Lemon Pudding" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="cranberry-curd-tart">
             <h2><a href="recipes/cranberry-curd-tart.html">Cranberry Curd Tart</a></h2>
@@ -553,7 +743,9 @@
             <img src="https://static01.nyt.com/images/2015/11/13/dining/13TANISDESERT1/13TANISDESERT1-mediumSquareAt3X-v2.jpg" alt="Cranberry Curd Tart" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="pistachio-pinwheels">
             <h2><a href="recipes/pistachio-pinwheels.html">Pistachio Pinwheels</a></h2>
@@ -565,7 +757,9 @@
             <img src="https://static01.nyt.com/images/2020/12/07/dining/cs-pistachio-pinwheels/merlin_180932526_f83d4853-083b-4b02-947d-dfa06b746508-videoSixteenByNineJumbo1600.jpg" alt="Pistachio Pinwheels" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="cranberry-cookie-butter-cheesecake">
             <h2><a href="recipes/cranberry-cookie-butter-cheesecake.html">Cranberry-Cookie Butter Cheesecake</a></h2>
@@ -577,7 +771,9 @@
             <img src="Cranberry-Cookie Butter Cheesecake.webp" alt="Cranberry-Cookie Butter Cheesecake" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="za’atar-parmesan-pinwheels">
             <h2><a href="recipes/za’atar-parmesan-pinwheels.html">Za’atar Parmesan Pinwheels</a></h2>
@@ -589,7 +785,9 @@
             <img src="Zaatar Parmesan Pinwheels.webp" alt="Za’atar Parmesan Pinwheels" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="chinese-chews">
             <h2><a href="recipes/chinese-chews.html">Chinese Chews</a></h2>
@@ -601,7 +799,9 @@
             <img src="Chinese Chews.webp" alt="Chinese Chews" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="chewy-earl-grey-sugar-cookies">
             <h2><a href="recipes/chewy-earl-grey-sugar-cookies.html">Chewy Earl Grey Sugar Cookies</a></h2>
@@ -613,7 +813,9 @@
             <img src="Chewy Earl Grey Sugar Cookies.webp" alt="Chewy Earl Grey Sugar Cookies" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="baked-brie">
             <h2><a href="recipes/baked-brie.html">Baked Brie</a></h2>
@@ -625,7 +827,9 @@
             <img src="Baked Brie.webp" alt="Baked Brie" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="baked-brie-puffs-with-chile-crisp">
             <h2><a href="recipes/baked-brie-puffs-with-chile-crisp.html">Baked Brie Puffs With Chile Crisp</a></h2>
@@ -637,7 +841,9 @@
             <img src="Baked Brie Puffs With Chile Crisp.webp" alt="Baked Brie Puffs With Chile Crisp" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="vegetarian-miso-mushroom-sausage-rolls">
             <h2><a href="recipes/vegetarian-miso-mushroom-sausage-rolls.html">Vegetarian Miso-Mushroom Sausage Rolls</a></h2>
@@ -649,7 +855,9 @@
             <img src="Vegetarian Miso-Mushroom Sausage Rolls.webp" alt="Vegetarian Miso-Mushroom Sausage Rolls" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="peanut-butter-blossoms">
             <h2><a href="recipes/peanut-butter-blossoms.html">Peanut Butter Blossoms</a></h2>
@@ -661,7 +869,9 @@
             <img src="https://static01.nyt.com/images/2015/11/24/dining/24COOKING-PEANUTBUTTERBLOSSOMS2/24COOKING-PEANUTBUTTERBLOSSOMS2-mediumSquareAt3X-v2.jpg" alt="Peanut Butter Blossoms" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="red-curry-lentils-with-sweet-potatoes-and-spinach">
             <h2><a href="recipes/red-curry-lentils-with-sweet-potatoes-and-spinach.html">Red Curry Lentils With Sweet Potatoes and Spinach</a></h2>
@@ -673,7 +883,9 @@
             <img src="https://static01.nyt.com/images/2020/01/02/dining/lh-red-lentils/lh-red-lentils-videoSixteenByNineJumbo1600.jpg" alt="Red Curry Lentils With Sweet Potatoes and Spinach" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="carla-hall’s-creamed-kale">
             <h2><a href="recipes/carla-hall’s-creamed-kale.html">Carla Hall’s Creamed Kale</a></h2>
@@ -685,7 +897,9 @@
             <img src="https://static01.nyt.com/images/2024/11/25/multimedia/25-CELEB-THANKSGIVING-CH-Kale-vblz/25-CELEB-THANKSGIVING-CH-Kale-vblz-videoSixteenByNineJumbo1600.jpg" alt="Carla Hall’s Creamed Kale" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="the-easiest-lemon-curd">
             <h2><a href="recipes/the-easiest-lemon-curd.html">The Easiest Lemon Curd</a></h2>
@@ -697,7 +911,9 @@
             <img src="https://static01.nyt.com/images/2021/06/09/dining/04Apperex-curd/merlin_188667861_7ac23007-3e60-489f-a646-d556056b11d0-videoSixteenByNineJumbo1600.jpg" alt="The Easiest Lemon Curd" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="miso-butter-pasta-with-butternut-squash">
             <h2><a href="recipes/miso-butter-pasta-with-butternut-squash.html">Miso-Butter Pasta With Butternut Squash</a></h2>
@@ -711,7 +927,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2021/10/13/dining/yf-miso-squash-pasta/merlin_195007083_8d48d736-c945-46f4-b78b-8ff76478e8aa-videoSixteenByNineJumbo1600.jpg" alt="Miso-Butter Pasta With Butternut Squash" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="slow-cooker-red-lentil-pumpkin-soup">
             <h2><a href="recipes/slow-cooker-red-lentil-pumpkin-soup.html">Slow Cooker Red Lentil Pumpkin Soup</a></h2>
@@ -723,7 +941,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2025/11/07/multimedia/SD-Slow-Cooker-Red-Lentil-Pumpkin-Soup-ztpw/SD-Slow-Cooker-Red-Lentil-Pumpkin-Soup-ztpw-videoSixteenByNineJumbo1600.jpg" alt="Slow Cooker Red Lentil Pumpkin Soup" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="scottish-shortbread">
             <h2><a href="recipes/scottish-shortbread.html">Scottish Shortbread</a></h2>
@@ -735,7 +955,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://leitesculinaria.com/wp-content/uploads/2023/11/scottish-shortbread-1200-500x500.jpg" alt="Scottish Shortbread" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="quiche-lorraine">
             <h2><a href="recipes/quiche-lorraine.html">Quiche Lorraine</a></h2>
@@ -747,7 +969,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2018/01/16/dining/16COOKING-QUICHELORRAINE2-copy/16COOKING-QUICHELORRAINE2-videoSixteenByNineJumbo1600.jpg" alt="Quiche Lorraine" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="brown-butter-chocolate-chip-cookies">
             <h2><a href="recipes/brown-butter-chocolate-chip-cookies.html">Brown Butter Chocolate Chip Cookies</a></h2>
@@ -759,19 +983,11 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://assets.bonappetit.com/photos/58e2844b65366d7ba90812ea/16:9/w_4030,h_2267,c_limit/0417-Brown-Butter-Toffee-ChocolateChip%20Cookie-group.jpg" alt="Brown Butter Chocolate Chip Cookies" class="recipe-image">
             
         </div>
+            
         
             
-        <div class="recipe" id="gochujang-butter-braised-tofu">
-            <h2><a href="recipes/gochujang-butter-braised-tofu.html">Gochujang-Butter-Braised Tofu</a></h2>
-            
-            <div class="description">This deeply savory main is so easy and lightning fast, it gets dinner on the table in less than the time it takes to make rice.</div>
-            
-
-            
-            <img src="https://assets.bonappetit.com/photos/65e602cfab2dec7b920687be/16:9/w_7984,h_4491,c_limit/20240118-0424-DIS-507.jpg" alt="Gochujang-Butter-Braised Tofu" class="recipe-image">
-            
-        </div>
         
+            
             
         <div class="recipe" id="moroccan-chickpea-stew">
             <h2><a href="recipes/moroccan-chickpea-stew.html">Moroccan Chickpea Stew</a></h2>
@@ -783,7 +999,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://www.acouplecooks.com/wp-content/uploads/2017/01/076-Moroccan-Sweet-Potato-Stew-with-Quinoa-320x180.jpg" alt="Moroccan Chickpea Stew" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="aloo-masala-(spiced-potatoes)">
             <h2><a href="recipes/aloo-masala-(spiced-potatoes).html">Aloo Masala (Spiced Potatoes)</a></h2>
@@ -795,7 +1013,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2020/03/04/dining/tr-aloo-masala/merlin_169211607_6cefcc4e-9792-493e-aa27-f00f217a9621-videoSixteenByNineJumbo1600.jpg" alt="Aloo Masala (Spiced Potatoes)" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="quiche-with-red-peppers-and-spinach">
             <h2><a href="recipes/quiche-with-red-peppers-and-spinach.html">Quiche With Red Peppers and Spinach</a></h2>
@@ -807,7 +1027,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2014/04/21/dining/Red-Peppers-and-Spinach/Red-Peppers-and-Spinach-facebookJumbo-v2.jpg" alt="Quiche With Red Peppers and Spinach" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="pommes-anna">
             <h2><a href="recipes/pommes-anna.html">Pommes Anna</a></h2>
@@ -819,19 +1041,11 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2017/01/15/dining/DINING-POMMES-ANNA2/DINING-POMMES-ANNA2-videoSixteenByNineJumbo1600.jpg" alt="Pommes Anna" class="recipe-image">
             
         </div>
+            
         
             
-        <div class="recipe" id="braised-pork-chops-with-tomatoes,-anchovies-and-rosemary">
-            <h2><a href="recipes/braised-pork-chops-with-tomatoes,-anchovies-and-rosemary.html">Braised Pork Chops With Tomatoes, Anchovies and Rosemary</a></h2>
-            
-            <div class="description">This is the sort of thing to make when you long for a satisfying, braised beef pot roast, but you don't have the several hours required. Here, pork chops are seared until they're mahogany in color, then tossed in with a quick sauce of tomatoes, garlic, rosemary and anchovies. The whole mess goes in to the oven for about 15 minutes until the chops are cooked through. Don't be put off by the anchovies; they will magically melt into the sauce.</div>
-            
-
-            
-            <img src="https://static01.nyt.com/images/2014/04/17/dining/-Braised-Pork-Chops/-Braised-Pork-Chops-facebookJumbo-v2.jpg" alt="Braised Pork Chops With Tomatoes, Anchovies and Rosemary" class="recipe-image">
-            
-        </div>
         
+            
             
         <div class="recipe" id="classic-tiramisù">
             <h2><a href="recipes/classic-tiramisù.html">Classic Tiramisù</a></h2>
@@ -843,7 +1057,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2017/04/05/dining/05COOKING-TIRAMISU1/05COOKING-TIRAMISU1-videoSixteenByNineJumbo1600.jpg" alt="Classic Tiramisù" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="lemon-bars-with-olive-oil-and-sea-salt">
             <h2><a href="recipes/lemon-bars-with-olive-oil-and-sea-salt.html">Lemon Bars With Olive Oil and Sea Salt</a></h2>
@@ -855,7 +1071,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2025/02/25/multimedia/lemon-bars-vjgp/lemon-bars-vjgp-videoSixteenByNineJumbo1600.jpg" alt="Lemon Bars With Olive Oil and Sea Salt" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="sweet-potato-fries-with-sriracha-dip">
             <h2><a href="recipes/sweet-potato-fries-with-sriracha-dip.html">Sweet Potato Fries With Sriracha Dip</a></h2>
@@ -867,7 +1085,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://assets.bonappetit.com/photos/64cbf98fee399ec121b433b1/1:1/w_2240,c_limit/20230719-COOKING-29251%201.jpg" alt="Sweet Potato Fries With Sriracha Dip" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="easy-sugar-cookies">
             <h2><a href="recipes/easy-sugar-cookies.html">Easy Sugar Cookies</a></h2>
@@ -879,7 +1099,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2024/09/25/multimedia/SS-Soft-Sugar-Cookiesrex-whfl/SS-Soft-Sugar-Cookiesrex-whfl-videoSixteenByNineJumbo1600.jpg" alt="Easy Sugar Cookies" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="country-‘meatloaf’-with-golden-gravy">
             <h2><a href="recipes/country-‘meatloaf’-with-golden-gravy.html">Country ‘Meatloaf’ With Golden Gravy</a></h2>
@@ -891,7 +1113,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2011/11/17/health/Well_veggie_meatloafa/Well_veggie_meatloafa-facebookJumbo-v2.jpg" alt="Country ‘Meatloaf’ With Golden Gravy" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="roasted-gochujang-cabbage">
             <h2><a href="recipes/roasted-gochujang-cabbage.html">Roasted Gochujang Cabbage</a></h2>
@@ -903,7 +1127,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2024/11/01/multimedia/AS-gochujang-cabbagerex-qbzc/AS-gochujang-cabbagerex-qbzc-videoSixteenByNineJumbo1600.jpg" alt="Roasted Gochujang Cabbage" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="vegan-lettuce-wraps-with-teriyaki-tempeh">
             <h2><a href="recipes/vegan-lettuce-wraps-with-teriyaki-tempeh.html">Vegan Lettuce Wraps with Teriyaki Tempeh</a></h2>
@@ -915,7 +1141,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://www.emilieeats.com/wp-content/uploads/2016/03/Teriyaki-Tempeh-lettuce-wraps-feat-320x180.jpg" alt="Vegan Lettuce Wraps with Teriyaki Tempeh" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="surprisingly-satisfying-cauliflower-chowder">
             <h2><a href="recipes/surprisingly-satisfying-cauliflower-chowder.html">Surprisingly Satisfying Cauliflower Chowder</a></h2>
@@ -927,7 +1155,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://assets.bonappetit.com/photos/67be6f34459ae136c052fc6c/4:3/w_3515,h_2636,c_limit/cauliflower-chowder_LEDE_V1_021325_1193_VOG_final.jpg" alt="Surprisingly Satisfying Cauliflower Chowder" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="butternut-squash-soup">
             <h2><a href="recipes/butternut-squash-soup.html">Butternut Squash Soup</a></h2>
@@ -939,7 +1169,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2022/10/12/dining/yk-butternut-squash-soup/merlin_214343178_1328f28b-0b44-4ac5-96f8-945bd8479173-videoSixteenByNineJumbo1600.jpg" alt="Butternut Squash Soup" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="crispy-coconut-tempeh">
             <h2><a href="recipes/crispy-coconut-tempeh.html">Crispy Coconut Tempeh</a></h2>
@@ -953,7 +1185,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2021/10/11/dining/as-crispy-coconut-tempeh/merlin_195006840_eed79e6c-7c68-43e4-808a-53e3eef56baf-videoSixteenByNineJumbo1600.jpg" alt="Crispy Coconut Tempeh" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="vegetarian-tamale-pie">
             <h2><a href="recipes/vegetarian-tamale-pie.html">Vegetarian Tamale Pie</a></h2>
@@ -965,7 +1199,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="https://static01.nyt.com/images/2023/02/01/multimedia/27apperex-hmpw/25apperex-hmpw-videoSixteenByNineJumbo1600.jpg" alt="Vegetarian Tamale Pie" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="spicy-carrot-ginger-soup">
             <h2><a href="recipes/spicy-carrot-ginger-soup.html">Spicy Carrot-Ginger Soup</a></h2>
@@ -977,7 +1213,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="Spicy Carrot-Ginger Soup.webp" alt="Spicy Carrot-Ginger Soup" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="sticky,-spicy-tempeh">
             <h2><a href="recipes/sticky,-spicy-tempeh.html">Sticky, Spicy Tempeh</a></h2>
@@ -989,7 +1227,9 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="Sticky Spicy Tempeh.webp" alt="Sticky, Spicy Tempeh" class="recipe-image">
             
         </div>
+            
         
+            
             
         <div class="recipe" id="sticky-spicy-glazed-sweet-potatoes">
             <h2><a href="recipes/sticky-spicy-glazed-sweet-potatoes.html">Sticky-Spicy Glazed Sweet Potatoes</a></h2>
@@ -1001,6 +1241,7 @@ To get vegetarian recipes like this one delivered to your inbox, sign up for The
             <img src="Sticky-Spicy Glazed Sweet Potatoes.webp" alt="Sticky-Spicy Glazed Sweet Potatoes" class="recipe-image">
             
         </div>
+            
         
     </main>
 
