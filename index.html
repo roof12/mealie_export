@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f5f1ea;
+            --surface: #fffdf8;
+            --surface-alt: #f3ede4;
+            --text: #24211d;
+            --muted: #665c51;
+            --border: #ddd3c6;
+            --link: #8a4b2b;
+            --link-hover: #64351f;
+            --shadow: 0 12px 30px rgba(61, 43, 28, 0.08);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 32px 20px 28px;
+            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            margin: 0 0 12px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .page-header {
+            margin-bottom: 24px;
+        }
+        .intro {
+            margin: 0 0 28px;
+            color: var(--muted);
+            max-width: 60ch;
+        }
+        .recipe {
+            margin-bottom: 22px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background-color: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, background-color 0.3s, border-color 0.3s;
+        }
+        .recipe:hover {
+            transform: translateY(-1px);
+        }
+        h2 {
+            color: var(--text);
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+        }
+        .description {
+            color: var(--muted);
+            font-style: normal;
+            margin: 0;
+        }
+        .recipe-link {
+            margin-top: 12px;
+            display: inline-block;
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+        .recipe-link:hover {
+            color: var(--link-hover);
+        }
+        .recipe-image {
+            display: block;
+            width: min(240px, 100%);
+            max-height: 170px;
+            object-fit: cover;
+            height: auto;
+            margin-top: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --bg: #14110f;
+            --surface: #1c1815;
+            --surface-alt: #25201b;
+            --text: #f4ece2;
+            --muted: #c5b8ab;
+            --border: #3a3028;
+            --link: #f0a56f;
+            --link-hover: #ffbd89;
+            --shadow: none;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        body.dark-mode h1 {
+            color: var(--text);
+        }
+
+        body.dark-mode .recipe {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        body.dark-mode h2 {
+            color: var(--text);
+        }
+
+        body.dark-mode .description {
+            color: var(--muted);
+        }
+
+        body.dark-mode .recipe-image {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--link);
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+        }
+
+        .site-nav a,
+        .site-nav span {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+
+        .site-nav a:hover {
+            color: var(--link-hover);
+        }
+
+        .site-nav .current {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .site-footer {
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .site-footer a {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+
+        .site-footer a:hover {
+            color: var(--link-hover);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+
+    <main>
+        <div class="page-header">
+            <h1>Recipes</h1>
+            <nav class="site-nav" aria-label="Site navigation">
+                <span class="current">Home</span>
+                <span aria-hidden="true">·</span>
+            </nav>
+        </div>
+        <p class="intro">The recipes and photos are not mine. A link to the originals is included where known.</p>
+
+        
+            
+        <div class="recipe" id="cinna-buns">
+            <h2><a href="recipes/cinna-buns.html">Cinna-Buns</a></h2>
+            
+            <div class="description">Love those ooey-gooey cinnamon buns you find at the shopping mall? These sweet, tender (some would say squishy) cinnamon buns, crowned with a thick dollop of rich cream cheese icing, make a trip to the mall (or airport) unnecessary.</div>
+            
+
+            
+            <img src="Cinna-Buns.webp" alt="Cinna-Buns" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="rugelach-cookies-with-cream-cheese-dough">
+            <h2><a href="recipes/rugelach-cookies-with-cream-cheese-dough.html">Rugelach Cookies with Cream Cheese Dough</a></h2>
+            
+            <div class="description">Homemade rugelach is buttery and flaky with a light and crisp pastry dough and sweet cinnamon filling.</div>
+            
+
+            
+            <img src="Rugelach Cookies with Cream Cheese Dough.webp" alt="Rugelach Cookies with Cream Cheese Dough" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="homemade-artisan-bread-recipe">
+            <h2><a href="recipes/homemade-artisan-bread-recipe.html">Homemade Artisan Bread Recipe</a></h2>
+            
+            <div class="description">Even if you've never made homemade bread or worked with yeast before, this homemade artisan bread is for you. Watch the video tutorial below and review the recipe instructions and recipe notes prior to beginning. If you’re new to working with yeast, reference my Baking with Yeast Guide for answers to common yeast FAQs.</div>
+            
+
+            
+            <img src="Homemade Artisan Bread Recipe.webp" alt="Homemade Artisan Bread Recipe" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="homemade-ciabatta-bread">
+            <h2><a href="recipes/homemade-ciabatta-bread.html">Homemade Ciabatta Bread</a></h2>
+            
+            <div class="description">Rustic-looking and flavorful, with a flour-streaked crusty exterior and extra-chewy interior pockmarked by air bubbles, this classic Italian-style bread is made from just 4 ingredients. Making these ciabatta rolls is a 2-day process. For best success, I strongly recommend reading through the recipe before you get started. Do not be shy with the flour when flouring the work surface and your hands. Use as much as you need to handle the dough. If you have one, use a kitchen scale to measure your ingredients by weight (in grams). With this sticky dough, a bench scraper is basically an extension of your hands. It helps you shape and neatly straighten the dough.</div>
+            
+
+            
+            <img src="Homemade Ciabatta Bread.webp" alt="Homemade Ciabatta Bread" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="homemade-bagels-recipe">
+            <h2><a href="recipes/homemade-bagels-recipe.html">Homemade Bagels Recipe</a></h2>
+            
+            <div class="description">Make fresh bagels right at home with this tested dough recipe. Don't skip the water bath and egg wash—both provide an extra chewy and golden brown crust. This recipe is also in my cookbook, Sally's Baking 101.</div>
+            
+
+            
+            <img src="Homemade Bagels Recipe.webp" alt="Homemade Bagels Recipe" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="homemade-glazed-doughnuts">
+            <h2><a href="recipes/homemade-glazed-doughnuts.html">Homemade Glazed Doughnuts</a></h2>
+            
+            <div class="description">Making homemade glazed doughnuts is easier than you think, but requires a little patience. Ready in about 2.5 hours, these taste like doughnuts from your favorite bakery, but they're made in the comfort of your own home. For doughnut success, follow my step-by-step photos, helpful success tips, and video tutorial below.</div>
+            
+
+            
+            <img src="Homemade Glazed Doughnuts.webp" alt="Homemade Glazed Doughnuts" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="pasta-with-miso,-parmesan-and-pickled-peppers">
+            <h2><a href="recipes/pasta-with-miso,-parmesan-and-pickled-peppers.html">Pasta With Miso, Parmesan and Pickled Peppers</a></h2>
+            
+            <div class="description">A little miso paste and a dash of soy sauce add umami complexity to this simple garlicky pantry pasta, while using pickled peppers, instead of the usual chile flakes, lends acidity as well as heat. Mild white miso works best here, integrating seamlessly with the other flavors. But you can substitute yellow or red miso if that’s what you have on hand; just take care when adding extra salt, tasting as you go.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2025/10/15/multimedia/15FD-APPETITEREX-MC-Midnight-Pasta-Miso-Parmesan-Jalapeno-vbjf/08FD-APPETITEREX-MC-Midnight-Pasta-Miso-Parmesan-Jalapeno-vbjf-videoSixteenByNineJumbo1600.jpg" alt="Pasta With Miso, Parmesan and Pickled Peppers" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="chewy-molasses-cookies">
+            <h2><a href="recipes/chewy-molasses-cookies.html">Chewy Molasses Cookies</a></h2>
+            
+            <div class="description">Our best molasses cookie recipe results in tender, soft cookies with warmth from ginger, cinnamon, and cardamom. Even better: They stay chewy for days and days.</div>
+            
+
+            
+            <img src="https://assets.bonappetit.com/photos/6377b82ca0fc58afb8d11600/4:3/w_2136,h_1602,c_limit/1118-ba-molasses-cookies-lede.jpg" alt="Chewy Molasses Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="lemon-miso-tofu-with-broccoli">
+            <h2><a href="recipes/lemon-miso-tofu-with-broccoli.html">Lemon-Miso Tofu With Broccoli</a></h2>
+            
+            <div class="description">Inspired by Cantonese-style lemon chicken, this vegetarian version features crispy tofu and broccoli coated in a citrusy sweet and savory sauce. This lemon sauce is neither overly sweet nor tart, but has a soft umami hum thanks to the addition of miso paste. The simple technique of dusting the tofu with cornstarch before pan-frying delivers crispy tofu that is light yet robust enough to carry the sauce. (The tofu and broccoli can also be cooked in an air-fryer with comparable results; see Tip for instructions.) Once the crusted tofu hits the sauce, it will soften and become velvety, though if you prefer more crunch, you can serve the lemon sauce on the side for dipping.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2025/06/06/multimedia/hm-lemon-miso-tofu-mqjh/hm-lemon-miso-tofu-mqjh-videoSixteenByNineJumbo1600.jpg" alt="Lemon-Miso Tofu With Broccoli" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="minty-lime-bars">
+            <h2><a href="recipes/minty-lime-bars.html">Minty Lime Bars</a></h2>
+            
+            <div class="description">These rich yet refreshing lime bars are for citrus lovers who appreciate puckering acidity in their desserts. The curd filling contains a bit of cornstarch, so it sets firmly in the oven, allowing you to slice, stack and store the bars easily. A little fresh mint inside the shortbread crust — which is made entirely by hand — adds an herbal complement to the lime.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2021/12/08/dining/08COOKIESREX3-LIMEBAR/merlin_198248754_cb938f1b-fd1d-4876-a04a-86abd0d4c399-videoSixteenByNineJumbo1600.jpg" alt="Minty Lime Bars" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="cranberry-tiramisù">
+            <h2><a href="recipes/cranberry-tiramisù.html">Cranberry Tiramisù</a></h2>
+            
+            <div class="description">Tiramisù is often identified by its traditional components: espresso-soaked ladyfingers tucked in a cloudlike mascarpone filling. For a playful take inspired by the classic, cranberry juice-soaked ladyfingers and cranberry sauce drizzled between the airy cream layers deliver a tart, fruity bite. Though this tiramisù might not come with espresso, its tangy cranberry pockets offer an invigorating midday or post-dinner pick-me-up. Since it can be prepared in advance, with no baking required, this dessert is ideal for Thanksgiving and other festive gatherings. Tiramisù gets better as it sits, allowing all the layers to mingle and create a cohesive bite.</div>
+            
+
+            
+            <img src="Cranberry Tiramisù.webp" alt="Cranberry Tiramisù" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="skillet-braised-pork-chops">
+            <h2><a href="recipes/skillet-braised-pork-chops.html">Skillet Braised Pork Chops</a></h2>
+            
+            <div class="description">Braising is the best method to ensure your pork chops will be fork-tender and delicious. After a quick sear, these Skillet Braised Pork Chops are cooked low and slow in a balsamic pan sauce to create an incredibly savory meal.</div>
+            
+
+            
+            <img src="Skillet Braised Pork Chops.webp" alt="Skillet Braised Pork Chops" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="skillet-cornbread">
+            <h2><a href="recipes/skillet-cornbread.html">Skillet Cornbread</a></h2>
+            
+            <div class="description">This cornbread recipe from photographer, documentarian and writer Pableaux Johnson is a simple and rustic standard. Baked in a hot skillet to encourage crispy edges and a substantially toasty bottom, cornbread is traditional to many regions in the South. This recipe was passed down by Mr. Johnson’s grandfather, Achille Leon Hebert from Baton Rouge, La., and it was served every Monday at Mr. Johnson’s legendary red beans and rice community table at his home in New Orleans. It traveled with him across the country on his Red Beans Roadshow, where he collaborated with local chefs and served dozens of communities over the span of almost a decade.</div>
+            
+
+            
+            <img src="Skillet Cornbread.webp" alt="Skillet Cornbread" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="peanut-butter-miso-cookies">
+            <h2><a href="recipes/peanut-butter-miso-cookies.html">Peanut Butter-Miso Cookies</a></h2>
+            
+            <div class="description">These cookies were the result of a happy accident. (The best things always are, aren’t they?) When the peanut butter ran out, similarly creamy white miso stepped in. The other ingredients were tweaked to offset the miso’s savory character, and what came out of the oven was salty and sweet, crunchy and chewy. A brief stint in the fridge helps mellow the miso’s bracing brackishness, and a roll in Demerara sugar adds a subtle crunch that pairs well with the tender cookie.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2019/10/16/dining/kc-miso-peanut-butter-cookies/merlin_162369633_695e5669-961b-4a3d-97b3-a3086043edd3-videoSixteenByNineJumbo1600.jpg" alt="Peanut Butter-Miso Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="baked-lemon-pudding">
+            <h2><a href="recipes/baked-lemon-pudding.html">Baked Lemon Pudding</a></h2>
+            
+            <div class="description">My repertoire of sweet lemon recipes is limited, but, as it happened, my friend, the Irish pastry chef JR Ryall, was in town, with his new cookbook “Ballymaloe Desserts,” for which I wrote the foreword. It contains a recipe for a homey hot lemon pudding. It's not a soufflé, but it has a light, airy feel. And, as it bakes, it separates into distinct layers, custardy on the bottom and spongy on top.</div>
+            
+
+            
+            <img src="Baked Lemon Pudding.webp" alt="Baked Lemon Pudding" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="cranberry-curd-tart">
+            <h2><a href="recipes/cranberry-curd-tart.html">Cranberry Curd Tart</a></h2>
+            
+            <div class="description">If you are a fan of lemon curd or the classic French tarte au citron, you will love this cranberry version. To minimize kitchen time, make it in stages, preparing the crust and curd a day or two in advance. The finished tart keeps well for a couple of days too. The wheat-free hazelnut crust is adapted from a cookie recipe from the pastry chef and writer David Lebovitz’s popular website. Discover more ideas for the big day in our best Thanksgiving recipes collection.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2015/11/13/dining/13TANISDESERT1/13TANISDESERT1-mediumSquareAt3X-v2.jpg" alt="Cranberry Curd Tart" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="pistachio-pinwheels">
+            <h2><a href="recipes/pistachio-pinwheels.html">Pistachio Pinwheels</a></h2>
+            
+            <div class="description">This recipe, from “Dessert Person” (Clarkson Potter, 2020) is one of those ace-up-your-sleeve, slice-and-bake cookie recipes every baker needs. The pinwheels are super tasty, need no decoration and require no major assembly. These buttery, nutty, shortbready cookies achieve the highest calling for any recipe: They look and taste as if they are harder to make than they are. (Watch Claire make them here.)</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2020/12/07/dining/cs-pistachio-pinwheels/merlin_180932526_f83d4853-083b-4b02-947d-dfa06b746508-videoSixteenByNineJumbo1600.jpg" alt="Pistachio Pinwheels" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="cranberry-cookie-butter-cheesecake">
+            <h2><a href="recipes/cranberry-cookie-butter-cheesecake.html">Cranberry-Cookie Butter Cheesecake</a></h2>
+            
+            <div class="description">This dual-toned, no-bake cheesecake is sure to steal the show at your next holiday celebration — minimal effort required. Crushed speculoos-style cookies create a spiced, sturdy crust that freezes while the two fillings are made, resulting in three distinct textures with every bite. A simple orange-scented cheesecake base is divided in two, for one layer whipped with cookie butter spread and the other infused with fresh cranberry sauce. The brilliant pink cranberry layer on top resembles a mousse more than a cheesecake. Cookie butter spread, popularized in Denmark and the Netherlands and once a specialty ingredient in the U.S., can now be found in many grocery stores in the snack or peanut butter aisle.</div>
+            
+
+            
+            <img src="Cranberry-Cookie Butter Cheesecake.webp" alt="Cranberry-Cookie Butter Cheesecake" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="za’atar-parmesan-pinwheels">
+            <h2><a href="recipes/za’atar-parmesan-pinwheels.html">Za’atar Parmesan Pinwheels</a></h2>
+            
+            <div class="description">These crunchy, savory snacks have the irresistible can’t-stop-eating nature of cheese straws, but with the added allure of a sprinkle of herby, sesame-flecked za’atar, a Middle Eastern seasoning mix available in large supermarkets and spice shops. Rolled into logs and sliced into pinwheels before baking, they puff into domes in the oven’s heat, turning golden, crisp and wonderfully flaky. If you can find all-butter puff pastry, it really makes a difference here, adding a rich, deep flavor and an especially bronzed color.</div>
+            
+
+            
+            <img src="Zaatar Parmesan Pinwheels.webp" alt="Za’atar Parmesan Pinwheels" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="chinese-chews">
+            <h2><a href="recipes/chinese-chews.html">Chinese Chews</a></h2>
+            
+            <div class="description">Chinese Chews, with their crispy tops and chewy centers, are a very old traditional bar cookie featuring nuts and dates.</div>
+            
+
+            
+            <img src="Chinese Chews.webp" alt="Chinese Chews" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="chewy-earl-grey-sugar-cookies">
+            <h2><a href="recipes/chewy-earl-grey-sugar-cookies.html">Chewy Earl Grey Sugar Cookies</a></h2>
+            
+            <div class="description">Floral and citrusy Earl Grey tea livens up these chewy sugar cookies. Instead of adding the leaves to the dough, the tea is steeped in melted butter for maximum flavor. If you are using loose leaf tea instead of tea from bags, use a mortar and pestle or spice grinder to finely grind it before adding it to the butter. Try adding a handful of chopped chocolate shards to the dough to make these cookies even more special.</div>
+            
+
+            
+            <img src="Chewy Earl Grey Sugar Cookies.webp" alt="Chewy Earl Grey Sugar Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="gochujang-caramel-cookies">
+            <h2><a href="recipes/gochujang-caramel-cookies.html">Gochujang Caramel Cookies</a></h2>
+            
+            <div class="description">Gochujang, the fermented Korean chile paste, offers intrigue in this otherwise classic chewy sugar cookie. A gentle amount of ground cinnamon lends snickerdoodle vibes, and the dough is raked through with ripples of clay-red gochujang “caramel,” in which brown sugar and butter mellow the chile’s heat. Mixing this dough by hand is highly recommended for the most defined crinkles and the chewiest texture.</div>
+            
+
+            
+            <img src="Gochujang Caramel Cookies.webp" alt="Gochujang Caramel Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="baked-brie">
+            <h2><a href="recipes/baked-brie.html">Baked Brie</a></h2>
+            
+            <div class="description">Serve a creamy, runny-centered, pastry-wrapped baked brie at your next party and watch your guests cluster around it, slicing off bits until it completely disappears. Don’t be tempted to use a fancy, artisan brie from a cheese shop here. This recipe works best with the regular kind of brie you find at the supermarket; fancier bries may leak out of their pastry. Choose any flavor jam for the topping. Orange or ginger marmalade will give you something tangier than, say, raspberry and cherry jam, which are sweeter, more mellow options. While a wedge of brie will work in this recipe, a round of brie looks prettiest.</div>
+            
+
+            
+            <img src="Baked Brie.webp" alt="Baked Brie" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="baked-brie-puffs-with-chile-crisp">
+            <h2><a href="recipes/baked-brie-puffs-with-chile-crisp.html">Baked Brie Puffs With Chile Crisp</a></h2>
+            
+            <div class="description">This flaky, creamy, sweet and spicy appetizer shrinks baked brie into single-bite, snackable sandwiches. (It’s hard to eat fewer than five.) They’re made by filling small squares of seeded puff pastry with a combination of Brie, raspberry preserves and chile crisp. The assembly is repetitive but not difficult — enlist friends to help, and they can be made up to 1 hour ahead of serving. If you want to serve the puffs warm, stick them in the oven for just a minute or two until the brie is gooey. If you have extra filling, add more to the puffs or save it to spread on tomorrow’s turkey sandwich. If you have extra puffs, eat them on their own as crackers.</div>
+            
+
+            
+            <img src="Baked Brie Puffs With Chile Crisp.webp" alt="Baked Brie Puffs With Chile Crisp" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="vegetarian-miso-mushroom-sausage-rolls">
+            <h2><a href="recipes/vegetarian-miso-mushroom-sausage-rolls.html">Vegetarian Miso-Mushroom Sausage Rolls</a></h2>
+            
+            <div class="description">The art of a delicious vegetarian sausage roll is in creating a filling that is just as moist and juicy as the original. This recipe turns to mushrooms to achieve that feat. Naturally packed with water, mushrooms keep the filling moist while imparting an immense savoriness that is reinforced by miso paste. Using two different types of mushrooms — a combination of cremini or button mushrooms and shiitake, oyster or other wild mushrooms — adds more flavor and texture, but feel free to experiment with other varieties. These bite-size mini rolls are perfect for sharing and can be made ahead of time and frozen (see Tip), so are well suited to potlucks, picnics or any holiday table. A tip: The mushroom mixture doubles as a great vegetarian burger; simply shape into patties and pan-fry until golden.</div>
+            
+
+            
+            <img src="Vegetarian Miso-Mushroom Sausage Rolls.webp" alt="Vegetarian Miso-Mushroom Sausage Rolls" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="peanut-butter-blossoms">
+            <h2><a href="recipes/peanut-butter-blossoms.html">Peanut Butter Blossoms</a></h2>
+            
+            <div class="description">For as long as anyone can remember, wedding receptions in Pittsburgh have featured cookie tables, laden with dozens of homemade old-fashioned offerings like lady locks, pizzelles and buckeyes. For weeks ahead, sometimes months, mothers and aunts and grandmas and in-laws hunker down in the kitchen baking and freezing. These peanut butter and chocolate cookies were part of the spread at Laura Gerrero and Luke Wiehagen's wedding in 2009. Though peanut blossoms were popularized by Freda Smith in a 1957 Pillsbury Bake-Off competition, this version of the now-classic cookie came from the bride's family. Discover more ideas for the holidays here.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2015/11/24/dining/24COOKING-PEANUTBUTTERBLOSSOMS2/24COOKING-PEANUTBUTTERBLOSSOMS2-mediumSquareAt3X-v2.jpg" alt="Peanut Butter Blossoms" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="red-curry-lentils-with-sweet-potatoes-and-spinach">
+            <h2><a href="recipes/red-curry-lentils-with-sweet-potatoes-and-spinach.html">Red Curry Lentils With Sweet Potatoes and Spinach</a></h2>
+            
+            <div class="description">In this vegetarian main inspired by Indian dal, lentils are cooked with an aromatic blend of Thai spices — fresh ginger, turmeric, red curry paste and chile — then simmered in coconut milk until fall-apart tender. Browning the sweet potatoes before cooking them with the lentils brings out their sweetness, balancing the heat from the chile and curry paste, while baby spinach tossed in just before serving adds fresh flavor. Serve over steamed white or brown rice, or with toasted flatbread on the side.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2020/01/02/dining/lh-red-lentils/lh-red-lentils-videoSixteenByNineJumbo1600.jpg" alt="Red Curry Lentils With Sweet Potatoes and Spinach" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="carla-hall’s-creamed-kale">
+            <h2><a href="recipes/carla-hall’s-creamed-kale.html">Carla Hall’s Creamed Kale</a></h2>
+            
+            <div class="description">I love creamed spinach, so I figured I’d really love creamed kale. I was right! Because the leaves are so much sturdier, they don’t break down in the sauce or release much water. That means a more satisfying chew with each bite, and more nutrients, too. This may sound like a trendy take on a classic, but kale’s been a soul food staple for hundreds of years. Everyone’s figuring out now what we’ve known forever: Kale really is delicious.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2024/11/25/multimedia/25-CELEB-THANKSGIVING-CH-Kale-vblz/25-CELEB-THANKSGIVING-CH-Kale-vblz-videoSixteenByNineJumbo1600.jpg" alt="Carla Hall’s Creamed Kale" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="the-easiest-lemon-curd">
+            <h2><a href="recipes/the-easiest-lemon-curd.html">The Easiest Lemon Curd</a></h2>
+            
+            <div class="description">Using a microwave to cook lemon curd streamlines the entire process, and eliminates the need to stand over the stove whisking constantly. The result is silky-smooth and as tart as you like. Use the smaller amount of sugar for a puckery curd, and more for something with greater balance. Once you get the technique down (and it may take some finessing since everyone’s microwave is a bit different), you can vary the citrus, substituting lime or grapefruit for lemon, and seasoning it with makrut lime leaves or Campari (see Tips). Curd will keep in the fridge for at least five days; serve it with cookies or fruit, fold it into whipped cream to make lemon mousse or spoon it into a tart shell for a glossy lemon tart.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2021/06/09/dining/04Apperex-curd/merlin_188667861_7ac23007-3e60-489f-a646-d556056b11d0-videoSixteenByNineJumbo1600.jpg" alt="The Easiest Lemon Curd" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="miso-butter-pasta-with-butternut-squash">
+            <h2><a href="recipes/miso-butter-pasta-with-butternut-squash.html">Miso-Butter Pasta With Butternut Squash</a></h2>
+            
+            <div class="description">A true love match, miso and butter create a simple yet deeply flavorful pasta that hits all the right notes: sweet, salty and savory. Smashed garlic cloves roast with the squash to gently flavor it, then become silky-soft treasures you’ll discover while eating. Finishing the dish with lime cuts through the richness of the butter, but you can use lemon, too. Try using other vegetables like eggplant, pumpkin or carrots to make this dish your own.
+
+To get vegetarian recipes like this one delivered to your inbox, sign up for The Veggie newsletter.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2021/10/13/dining/yf-miso-squash-pasta/merlin_195007083_8d48d736-c945-46f4-b78b-8ff76478e8aa-videoSixteenByNineJumbo1600.jpg" alt="Miso-Butter Pasta With Butternut Squash" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="slow-cooker-red-lentil-pumpkin-soup">
+            <h2><a href="recipes/slow-cooker-red-lentil-pumpkin-soup.html">Slow Cooker Red Lentil Pumpkin Soup</a></h2>
+            
+            <div class="description">The unexpected combination of red lentils and canned pumpkin make the base of this richly spiced, hands-off soup, seasoned with earthy turmeric, smoky paprika and citrusy coriander. The slow-cooker recipe leans on budget-friendly pantry items for a lot of flavor payoff with very little work. Before serving, it takes just 10 minutes to toast pepitas with cumin and fry some chopped red onion, quickly yielding finishing touches that make an outsize contribution. You can also make this soup on the stovetop: Just combine the ingredients in a large pot as you would the slow cooker, bring to a low simmer and cover the pot. Cook, stirring occasionally, until the lentils are tender, about 30 minutes. (You may need to adjust the texture for the stovetop by adding a little bit more water.)</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2025/11/07/multimedia/SD-Slow-Cooker-Red-Lentil-Pumpkin-Soup-ztpw/SD-Slow-Cooker-Red-Lentil-Pumpkin-Soup-ztpw-videoSixteenByNineJumbo1600.jpg" alt="Slow Cooker Red Lentil Pumpkin Soup" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="scottish-shortbread">
+            <h2><a href="recipes/scottish-shortbread.html">Scottish Shortbread</a></h2>
+            
+            <div class="description">This traditional Scottish shortbread recipe is made with butter, flour, granulated and powdered sugar, and salt to create a perfectly crumbly, melt-in-your-mouth biscuit.</div>
+            
+
+            
+            <img src="https://leitesculinaria.com/wp-content/uploads/2023/11/scottish-shortbread-1200-500x500.jpg" alt="Scottish Shortbread" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="quiche-lorraine">
+            <h2><a href="recipes/quiche-lorraine.html">Quiche Lorraine</a></h2>
+            
+            <div class="description">The first quiche to come to the attention of the American public was the quiche Lorraine in the 1950s. Craig Claiborne, who started as food editor of The Times in 1957, created this classic recipe with bacon, onion and cheese to fill a pie dish. If you use a tart pan, expect to have extra custard. Discover more ideas for the holidays here.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2018/01/16/dining/16COOKING-QUICHELORRAINE2-copy/16COOKING-QUICHELORRAINE2-videoSixteenByNineJumbo1600.jpg" alt="Quiche Lorraine" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="brown-butter-chocolate-chip-cookies">
+            <h2><a href="recipes/brown-butter-chocolate-chip-cookies.html">Brown Butter Chocolate Chip Cookies</a></h2>
+            
+            <div class="description">Prepare for this chocolate-chip brown-butter cookie recipe to ruin you for all others. A combination of toffee candy and bittersweet chocolate set them apart.</div>
+            
+
+            
+            <img src="https://assets.bonappetit.com/photos/58e2844b65366d7ba90812ea/16:9/w_4030,h_2267,c_limit/0417-Brown-Butter-Toffee-ChocolateChip%20Cookie-group.jpg" alt="Brown Butter Chocolate Chip Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="gochujang-butter-braised-tofu">
+            <h2><a href="recipes/gochujang-butter-braised-tofu.html">Gochujang-Butter-Braised Tofu</a></h2>
+            
+            <div class="description">This deeply savory main is so easy and lightning fast, it gets dinner on the table in less than the time it takes to make rice.</div>
+            
+
+            
+            <img src="https://assets.bonappetit.com/photos/65e602cfab2dec7b920687be/16:9/w_7984,h_4491,c_limit/20240118-0424-DIS-507.jpg" alt="Gochujang-Butter-Braised Tofu" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="moroccan-chickpea-stew">
+            <h2><a href="recipes/moroccan-chickpea-stew.html">Moroccan Chickpea Stew</a></h2>
+            
+            <div class="description">This Moroccan chickpea stew is hearty and satisfying: packed with healthy vegetables and a savory blend of spices!</div>
+            
+
+            
+            <img src="https://www.acouplecooks.com/wp-content/uploads/2017/01/076-Moroccan-Sweet-Potato-Stew-with-Quinoa-320x180.jpg" alt="Moroccan Chickpea Stew" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="aloo-masala-(spiced-potatoes)">
+            <h2><a href="recipes/aloo-masala-(spiced-potatoes).html">Aloo Masala (Spiced Potatoes)</a></h2>
+            
+            <div class="description">A little bowl of simply spiced half-mashed potatoes and onion, glistening with fat, is a standard side dish at bustling restaurants that serve dosas. It’s also one of the best vegetable dishes — inexpensive, quick and delicious — to add to your repertoire as a home cook. The key to these potatoes is water, not fat. Overcooking them just slightly ensures that they’re tender, and that they hold enough moisture so when you drop them into the hot pan, they break up and meld into the sautéed onion mix, becoming almost indistinguishable from it. Though aloo masala is great with a hot dosa, it’s a versatile dish that can also work as a side with other meals.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2020/03/04/dining/tr-aloo-masala/merlin_169211607_6cefcc4e-9792-493e-aa27-f00f217a9621-videoSixteenByNineJumbo1600.jpg" alt="Aloo Masala (Spiced Potatoes)" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="quiche-with-red-peppers-and-spinach">
+            <h2><a href="recipes/quiche-with-red-peppers-and-spinach.html">Quiche With Red Peppers and Spinach</a></h2>
+            
+            <div class="description">The real spring vegetable here is the spinach, lush and beautiful at this time of year. You can always get red peppers in a supermarket, and when you cook them for a while, as you do here, even the dullest will taste sweet. I make the pepper mixture first, then wilt the spinach in the same pan and line the tart shell with the savory mix. If you can, make the pepper and spinach filling a day ahead. It dries out a little if it sits overnight in the refrigerator and is less likely to dilute the custard.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2014/04/21/dining/Red-Peppers-and-Spinach/Red-Peppers-and-Spinach-facebookJumbo-v2.jpg" alt="Quiche With Red Peppers and Spinach" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="pommes-anna">
+            <h2><a href="recipes/pommes-anna.html">Pommes Anna</a></h2>
+            
+            <div class="description">This classic 19th-century French recipe brings out the best of the humble potato. In it, thin potato slices are layered into a skillet, basted in butter and baked. As they cook, the slices are compressed (under another skillet) so they hold together when unmolded. The potatoes on the exterior become brown and crisp, while the ones inside absorb the butter and turn satiny soft. The garlic isn't traditional, but it adds a pungent sweetness. Serve it as a classic and elegant side with roasted meat, or top it with fried eggs for an unusual vegetarian main course. You'll find a recipe for clarified butter here. This recipe is part of The New Essentials of French Cooking, a guide to definitive dishes every modern cook should master.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2017/01/15/dining/DINING-POMMES-ANNA2/DINING-POMMES-ANNA2-videoSixteenByNineJumbo1600.jpg" alt="Pommes Anna" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="braised-pork-chops-with-tomatoes,-anchovies-and-rosemary">
+            <h2><a href="recipes/braised-pork-chops-with-tomatoes,-anchovies-and-rosemary.html">Braised Pork Chops With Tomatoes, Anchovies and Rosemary</a></h2>
+            
+            <div class="description">This is the sort of thing to make when you long for a satisfying, braised beef pot roast, but you don't have the several hours required. Here, pork chops are seared until they're mahogany in color, then tossed in with a quick sauce of tomatoes, garlic, rosemary and anchovies. The whole mess goes in to the oven for about 15 minutes until the chops are cooked through. Don't be put off by the anchovies; they will magically melt into the sauce.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2014/04/17/dining/-Braised-Pork-Chops/-Braised-Pork-Chops-facebookJumbo-v2.jpg" alt="Braised Pork Chops With Tomatoes, Anchovies and Rosemary" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="classic-tiramisù">
+            <h2><a href="recipes/classic-tiramisù.html">Classic Tiramisù</a></h2>
+            
+            <div class="description">Done correctly, a classic tiramisù can be transcendent. A creamy dessert of espresso-soaked ladyfingers surrounded by lightly sweetened whipped cream and a rich mascarpone, tiramisù relies heavily on the quality of its ingredients. If you don’t have a barista setup at home, pick up the espresso at a local coffee shop, or use strongly brewed coffee. As for the ladyfingers, make your own or buy them, but keep in mind that store-bought varieties can range from soft and spongy (like angel food cake) to hard and crunchy (like biscotti). Both kinds will work here, but if you're using the softer variety, stick to a light brushing of espresso, instead of a deep dip. Discover more ideas for the holidays here.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2017/04/05/dining/05COOKING-TIRAMISU1/05COOKING-TIRAMISU1-videoSixteenByNineJumbo1600.jpg" alt="Classic Tiramisù" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="lemon-bars-with-olive-oil-and-sea-salt">
+            <h2><a href="recipes/lemon-bars-with-olive-oil-and-sea-salt.html">Lemon Bars With Olive Oil and Sea Salt</a></h2>
+            
+            <div class="description">Traditional lemon bars balance the tangy sweetness of lemon curd with a rich shortbread crust. This recipe adds extra notes of flavor to the mix: the compelling bitterness of good olive oil and a touch of sea salt sprinkled on top. They lend a mild savory character to this childhood favorite, making it a little more sophisticated than the usual lemon bar, but just as compelling. Choose an olive oil with personality, otherwise you’ll miss the point. Something herbal and fresh tasting with peppery notes works best. Although the bars will last up to five days when stored in the fridge, they have the brightest flavor when eaten within 24 hours of baking.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2025/02/25/multimedia/lemon-bars-vjgp/lemon-bars-vjgp-videoSixteenByNineJumbo1600.jpg" alt="Lemon Bars With Olive Oil and Sea Salt" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="sweet-potato-fries-with-sriracha-dip">
+            <h2><a href="recipes/sweet-potato-fries-with-sriracha-dip.html">Sweet Potato Fries With Sriracha Dip</a></h2>
+            
+            <div class="description">Learn how to make sweet potato fries in the oven. Our easy recipe for homemade sweet potato fries features hardy potato wedges and a spicy dipping sauce.</div>
+            
+
+            
+            <img src="https://assets.bonappetit.com/photos/64cbf98fee399ec121b433b1/1:1/w_2240,c_limit/20230719-COOKING-29251%201.jpg" alt="Sweet Potato Fries With Sriracha Dip" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="easy-sugar-cookies">
+            <h2><a href="recipes/easy-sugar-cookies.html">Easy Sugar Cookies</a></h2>
+            
+            <div class="description">Soft and perfectly chewy, here is our best recipe for sugar cookies.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2024/09/25/multimedia/SS-Soft-Sugar-Cookiesrex-whfl/SS-Soft-Sugar-Cookiesrex-whfl-videoSixteenByNineJumbo1600.jpg" alt="Easy Sugar Cookies" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="country-‘meatloaf’-with-golden-gravy">
+            <h2><a href="recipes/country-‘meatloaf’-with-golden-gravy.html">Country ‘Meatloaf’ With Golden Gravy</a></h2>
+            
+            <div class="description">Chloe Coscarelli, a vegan chef, offers this hearty vegetarian dish packed with protein.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2011/11/17/health/Well_veggie_meatloafa/Well_veggie_meatloafa-facebookJumbo-v2.jpg" alt="Country ‘Meatloaf’ With Golden Gravy" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="roasted-gochujang-cabbage">
+            <h2><a href="recipes/roasted-gochujang-cabbage.html">Roasted Gochujang Cabbage</a></h2>
+            
+            <div class="description">As the moisture from a heap of chopped cabbage evaporates in a scorching hot oven, the leaves shrink and soften and their edges crisp. Each bite is also warming and spicy thanks to a coating made mostly of gochujang, the chile paste made of gochugaru, fermented soybeans and glutinous rice. (Gochugaru and cabbage are a classic combination in kimchi.) Serve alongside tofu, pork tenderloin or another protein, or something starchy like rice or roasted sweet potatoes. Leftovers are great in egg sandwiches and quesadillas.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2024/11/01/multimedia/AS-gochujang-cabbagerex-qbzc/AS-gochujang-cabbagerex-qbzc-videoSixteenByNineJumbo1600.jpg" alt="Roasted Gochujang Cabbage" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="vegan-lettuce-wraps-with-teriyaki-tempeh">
+            <h2><a href="recipes/vegan-lettuce-wraps-with-teriyaki-tempeh.html">Vegan Lettuce Wraps with Teriyaki Tempeh</a></h2>
+            
+            <div class="description">Here's an easy 30-minute vegan meal! These Vegan Lettuce Wraps are filled with delicious teriyaki tempeh and packed with plant-based protein.</div>
+            
+
+            
+            <img src="https://www.emilieeats.com/wp-content/uploads/2016/03/Teriyaki-Tempeh-lettuce-wraps-feat-320x180.jpg" alt="Vegan Lettuce Wraps with Teriyaki Tempeh" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="surprisingly-satisfying-cauliflower-chowder">
+            <h2><a href="recipes/surprisingly-satisfying-cauliflower-chowder.html">Surprisingly Satisfying Cauliflower Chowder</a></h2>
+            
+            <div class="description">Cozy up to this creamy cauliflower and potato chowder infused with miso. It's a deeply savory and comforting vegetarian meal.</div>
+            
+
+            
+            <img src="https://assets.bonappetit.com/photos/67be6f34459ae136c052fc6c/4:3/w_3515,h_2636,c_limit/cauliflower-chowder_LEDE_V1_021325_1193_VOG_final.jpg" alt="Surprisingly Satisfying Cauliflower Chowder" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="butternut-squash-soup">
+            <h2><a href="recipes/butternut-squash-soup.html">Butternut Squash Soup</a></h2>
+            
+            <div class="description">With a combination of squash, onion, garlic and a little spice, this soup is as simple as it gets. Roasting the squash helps concentrate its natural flavors and is a step that can be done a day or two ahead. A splash of rice vinegar adds a tangy sparkle and, if you want a touch more sweetness, you can stir in some brown sugar or honey. Taste your soup before adding any — you may find your squash’s natural sugars offer just the right amount of sweetness for you.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2022/10/12/dining/yk-butternut-squash-soup/merlin_214343178_1328f28b-0b44-4ac5-96f8-945bd8479173-videoSixteenByNineJumbo1600.jpg" alt="Butternut Squash Soup" class="recipe-image">
+            
+        </div>
+        
+            
+        <div class="recipe" id="crispy-coconut-tempeh">
+            <h2><a href="recipes/crispy-coconut-tempeh.html">Crispy Coconut Tempeh</a></h2>
+            
+            <div class="description">This plant-based spin on coconut shrimp uses crumbled tempeh instead of shrimp. A mixture of coconut milk, sambal oelek, cornstarch and honey (substitute agave nectar to make it vegan) helps shredded coconut and panko stick to the tempeh, then the little nuggets fry up light, crispy and coconut-y through and through. A dusting of lime salt gives these a little spark (like the salted rim on a cocktail), and of course there’s a dipping sauce. Coconut shrimp is typically served with sweet chile sauce, but here, just use more of the sweet, spicy coconut milk. To make these tempeh nuggets a meal, serve with grains, sautéed greens like kale or spinach, or rice noodles.
+
+To get vegetarian recipes like this one delivered to your inbox, sign up for The Veggie newsletter.</div>
+            
+
+            
+            <img src="https://static01.nyt.com/images/2021/10/11/dining/as-crispy-coconut-tempeh/merlin_195006840_eed79e6c-7c68-43e4-808a-53e3eef56baf-videoSixteenByNineJumbo1600.jpg" alt="Crispy Coconut Tempeh" class="recipe-image">
+            
+        </div>
+        
+    </main>
+
+    <footer class="site-footer">
+        By roof12.cloud
+    </footer>
+
+    <script>
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Apply the theme preference
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeToggle').textContent = 'Light Mode';
+        }
+
+        // Toggle theme function
+        function toggleTheme() {
+            const body = document.body;
+            const toggleButton = document.getElementById('themeToggle');
+
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleButton.textContent = 'Light Mode';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleButton.textContent = 'Dark Mode';
+            }
+        }
+
+        // Add event listener to the toggle button
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // Listen for OS theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.body.classList.add('dark-mode');
+                    document.getElementById('themeToggle').textContent = 'Light Mode';
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    document.getElementById('themeToggle').textContent = 'Dark Mode';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

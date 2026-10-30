@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Glazed Doughnuts - Recipes</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f5f1ea;
+            --surface: #fffdf8;
+            --text: #24211d;
+            --muted: #665c51;
+            --border: #ddd3c6;
+            --link: #8a4b2b;
+            --link-hover: #64351f;
+            --shadow: 0 12px 30px rgba(61, 43, 28, 0.08);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 32px 20px 28px;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            margin: 10px 0 14px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .page-header {
+            margin-bottom: 24px;
+        }
+        .recipe-title {
+            margin: 0 0 18px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            font-size: 1.6rem;
+        }
+        .recipe-image {
+            display: block;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            margin: 18px 0 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow);
+        }
+        .description { color: var(--muted); font-style: normal; margin-bottom: 20px; max-width: 70ch; }
+        .section {
+            margin-bottom: 28px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        h3 {
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin-top: 0;
+        }
+        .recipe-link {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 14px;
+            color: var(--link);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+        .recipe-link:hover {
+            color: var(--link-hover);
+            border-color: var(--link);
+        }
+        body.dark-mode {
+            --bg: #14110f;
+            --surface: #1c1815;
+            --text: #f4ece2;
+            --muted: #c5b8ab;
+            --border: #3a3028;
+            --link: #f0a56f;
+            --link-hover: #ffbd89;
+            --shadow: none;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        body.dark-mode .recipe-image { border-color: rgba(255, 255, 255, 0.08); }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        .theme-toggle:hover { border-color: var(--link); }
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+        }
+        .site-nav a,
+        .site-footer a {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+        .site-nav span {
+            color: var(--link);
+        }
+        .site-nav a:hover,
+        .site-footer a:hover {
+            color: var(--link-hover);
+        }
+        .site-nav .current {
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .site-footer {
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+    <main>
+        <div class="page-header">
+            <h1>Recipes</h1>
+            <nav class="site-nav" aria-label="Site navigation">
+                <a href="../index.html">Home</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://okbuddy.dev">okbuddy.dev</a>
+            </nav>
+        </div>
+        <h2 class="recipe-title">Homemade Glazed Doughnuts</h2>
+        
+        <img src="../Homemade Glazed Doughnuts.webp" alt="Homemade Glazed Doughnuts" class="recipe-image">
+        
+        <div class="description">Making homemade glazed doughnuts is easier than you think, but requires a little patience. Ready in about 2.5 hours, these taste like doughnuts from your favorite bakery, but they're made in the comfort of your own home. For doughnut success, follow my step-by-step photos, helpful success tips, and video tutorial below.</div>
+
+        <div class="section">
+            <h3>Ingredients</h3>
+            <ul>
+                
+                <li>1 cup (240ml) whole milk, warmed to about 110°F (43°C)*</li>
+                
+                <li>2 and 1/4 teaspoons (7g) instant or active dry yeast (1 standard packet)*</li>
+                
+                <li>1/3 cup (65g) granulated sugar, divided</li>
+                
+                <li>2 large eggs</li>
+                
+                <li>6 Tablespoons (85g) unsalted butter, melted and slightly cooled</li>
+                
+                <li>1 teaspoon pure vanilla extract</li>
+                
+                <li>1/4 teaspoon ground nutmeg</li>
+                
+                <li>1/2 teaspoon salt</li>
+                
+                <li>4 cups (500g) all-purpose flour (spooned & leveled), plus more as needed</li>
+                
+                <li>1–2 quarts vegetable oil*</li>
+                
+                <li>2 cups (240g) confectioners’ sugar, sifted</li>
+                
+                <li>1/3 cup (80ml) heavy cream, half-and-half, or whole milk</li>
+                
+                <li>1/2 teaspoon pure vanilla extract</li>
+                
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>Instructions</h3>
+            <ol>
+                
+                <li>
+                    Prepare the dough
+                </li>
+                
+                <li>
+                    Whisk the warm milk, yeast, and 1 Tablespoon sugar together in the bowl of your stand mixer. Loosely cover and allow to sit for 5–10 minutes until foamy and frothy on top. *If you do not own a stand mixer, you can do this in a large mixing bowl, and in the next step, mix the dough together with a large wooden spoon/silicone spatula. It will take a bit of arm muscle. A hand mixer works, but the sticky dough repeatedly gets stuck in the beaters. Mixing by hand with a wooden spoon or silicone spatula is a better choice.*
+                </li>
+                
+                <li>
+                    Add the remaining sugar, the eggs, butter, vanilla, nutmeg, salt, and 2 cups (about 250g) flour. Beat on low speed for 1 minute. Scrape down the sides of the bowl with a silicone spatula as needed. Add remaining flour and beat on medium speed until the dough comes together and pulls away from the sides of the bowl, about 2 minutes. If needed, add more flour, 1 Tablespoon at a time, until the dough pulls away from the sides of the bowl. Don’t add too much flour, though. You want a slightly sticky dough.
+                </li>
+                
+                <li>
+                    Knead the dough
+                </li>
+                
+                <li>
+                    Keep the dough in the mixer and beat for an additional 5-7 full minutes, or knead by hand on a lightly floured surface for 5-7 full minutes. (If you’re new to bread-baking, my How to Knead Dough video tutorial can help here.) If the dough becomes too sticky during the kneading process, sprinkle 1 teaspoon of flour at a time on the dough or on the work surface/in the bowl to make a soft, slightly tacky dough. Do not add more flour than you need because you do not want a dry dough. After kneading, the dough should still feel a little soft. Poke it with your finger—if it slowly bounces back, your dough is ready to rise. You can also do a “windowpane test” to see if your dough has been kneaded long enough: tear off a small (roughly golfball-size) piece of dough and gently stretch it out until it’s thin enough for light to pass through it. Hold it up to a window or light. Does light pass through the stretched dough without the dough tearing first? If so, your dough has been kneaded long enough and is ready to rise. If not, keep kneading until it passes the windowpane test.
+                </li>
+                
+                <li>
+                    Let Dough Rise
+                </li>
+                
+                <li>
+                    Lightly grease a large bowl with oil or nonstick spray. Place the dough in the bowl, turning it to coat all sides in the oil. Cover the bowl and allow the dough to rise in a relatively warm environment for 1.5–2 hours or until double in size. (For a tiny reduction in rise time, see my answer to Where Should Dough Rise? in my Baking with Yeast Guide.)
+                </li>
+                
+                <li>
+                    Shape Doughnuts
+                </li>
+                
+                <li>
+                    When the dough is ready, punch it down to release the air. Remove dough from the bowl and turn it out onto a lightly floured surface. Using a rolling pin, roll the dough out until it is 1/2 inch thick. Using a 3–3.5-inch doughnut cutter, cut into doughnuts. Re-roll the scraps and cut more. *If you don’t have a doughnut cutter, you can use 1 large + 1 smaller circle cookie cutter (large should be about 3 and 1/2 inches).
+                </li>
+                
+                <li>
+                    Line 1 or 2 baking sheets with parchment paper or silicone baking mats. Place doughnuts and doughnut holes on each. Loosely cover and allow to rest for 30 minutes as you heat the oil. They will rise a bit as they rest. Place a cooling rack over another baking sheet.
+                </li>
+                
+                <li>
+                    Pour oil into a large heavy-duty pot fitted with an oil thermometer. Turn stove on to medium heat. Heat oil to 375°F (191°C). Add 2–3 doughnuts at a time and cook for 1 minute on each side. Carefully remove with a metal slotted spatula or metal slotted spoon. Be sure to lower stove’s temperature if oil temperature is rising; you want it to stay at 375°F (191°C). Wear kitchen gloves if oil is splashing. Place fried doughnuts onto prepared rack. Repeat with remaining doughnuts, then turn off heat.* (See Note for doughnut holes.)
+                </li>
+                
+                <li>
+                    Make the glaze
+                </li>
+                
+                <li>
+                    Whisk all the glaze ingredients together. Dip each warm doughnut (don’t wait for them to cool!) into the glaze, making sure to coat both sides. Place back onto prepared rack, as excess glaze drips down. After about 20 minutes, the glaze will set.
+                </li>
+                
+                <li>
+                    Doughnuts are best enjoyed the same day. You can store leftover doughnuts in an airtight container at room temperature or in the refrigerator for another day or two.
+                </li>
+                
+            </ol>
+        </div>
+
+        
+        <a href="https://sallysbakingaddiction.com/how-to-make-homemade-glazed-doughnuts/" class="recipe-link" target="_blank" rel="noopener noreferrer">View Original Recipe</a>
+        
+    </main>
+
+    <footer class="site-footer">
+        By <a href="https://okbuddy.dev">okbuddy.dev</a>
+    </footer>
+
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeToggle').textContent = 'Light Mode';
+        }
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            document.getElementById('themeToggle').textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f5f1ea;
+            --surface: #fffdf8;
+            --surface-alt: #f3ede4;
+            --text: #24211d;
+            --muted: #665c51;
+            --border: #ddd3c6;
+            --link: #8a4b2b;
+            --link-hover: #64351f;
+            --shadow: 0 12px 30px rgba(61, 43, 28, 0.08);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 32px 20px 28px;
+            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            margin: 0 0 12px;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .page-header {
+            margin-bottom: 24px;
+        }
+        .intro {
+            margin: 0 0 28px;
+            color: var(--muted);
+            max-width: 60ch;
+        }
+        .recipe {
+            margin-bottom: 22px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background-color: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, background-color 0.3s, border-color 0.3s;
+        }
+        .recipe:hover {
+            transform: translateY(-1px);
+        }
+        h2 {
+            color: var(--text);
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+        }
+        .description {
+            color: var(--muted);
+            font-style: normal;
+            margin: 0;
+        }
+        .recipe-link {
+            margin-top: 12px;
+            display: inline-block;
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+        .recipe-link:hover {
+            color: var(--link-hover);
+        }
+        .recipe-image {
+            display: block;
+            width: min(240px, 100%);
+            max-height: 170px;
+            object-fit: cover;
+            height: auto;
+            margin-top: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --bg: #14110f;
+            --surface: #1c1815;
+            --surface-alt: #25201b;
+            --text: #f4ece2;
+            --muted: #c5b8ab;
+            --border: #3a3028;
+            --link: #f0a56f;
+            --link-hover: #ffbd89;
+            --shadow: none;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        body.dark-mode h1 {
+            color: var(--text);
+        }
+
+        body.dark-mode .recipe {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        body.dark-mode h2 {
+            color: var(--text);
+        }
+
+        body.dark-mode .description {
+            color: var(--muted);
+        }
+
+        body.dark-mode .recipe-image {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--link);
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+        }
+
+        .site-nav a,
+        .site-nav span {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+
+        .site-nav a:hover {
+            color: var(--link-hover);
+        }
+
+        .site-nav .current {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .site-footer {
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .site-footer a {
+            color: var(--link);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.14em;
+        }
+
+        .site-footer a:hover {
+            color: var(--link-hover);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+
+    <main>
+        <div class="page-header">
+            <h1>Recipes</h1>
+            <nav class="site-nav" aria-label="Site navigation">
+                <span class="current">Home</span>
+            </nav>
+        </div>
+        <p class="intro">The recipes and photos are not mine. A link to the originals is included where known.</p>
+
+        {% for recipe in recipes %}
+            {% set recipe_id = (recipe.name or 'unnamed-recipe') | lower | replace(' ', '-') | replace('_', '-') %}
+        <div class="recipe" id="{{ recipe_id }}">
+            <h2><a href="recipes/{{ recipe_id }}.html">{{ recipe.name or 'Unnamed Recipe' }}</a></h2>
+            {% if recipe.description %}
+            <div class="description">{{ recipe.description }}</div>
+            {% endif %}
+
+            {% if recipe.image %}
+            <img src="{{ recipe.image }}" alt="{{ recipe.name or 'Recipe Image' }}" class="recipe-image">
+            {% endif %}
+        </div>
+        {% endfor %}
+    </main>
+
+    <footer class="site-footer">
+        By roof12.cloud
+    </footer>
+
+    <script>
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Apply the theme preference
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeToggle').textContent = 'Light Mode';
+        }
+
+        // Toggle theme function
+        function toggleTheme() {
+            const body = document.body;
+            const toggleButton = document.getElementById('themeToggle');
+
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleButton.textContent = 'Light Mode';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleButton.textContent = 'Dark Mode';
+            }
+        }
+
+        // Add event listener to the toggle button
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // Listen for OS theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.body.classList.add('dark-mode');
+                    document.getElementById('themeToggle').textContent = 'Light Mode';
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    document.getElementById('themeToggle').textContent = 'Dark Mode';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
