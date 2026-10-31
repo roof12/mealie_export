@@ -151,7 +151,7 @@
         </div>
         <h2 class="recipe-title">{{ recipe.name }}</h2>
         {% if recipe.image %}
-        <img src="../{{ recipe.image }}" alt="{{ recipe.name }}" class="recipe-image">
+        <img src="{{ recipe.image if recipe.image.startswith(('http://', 'https://', '//')) else '../' ~ recipe.image }}" alt="{{ recipe.name }}" class="recipe-image">
         {% endif %}
         <div class="description">{{ recipe.description }}</div>
 

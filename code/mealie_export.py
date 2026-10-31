@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 import sys
 import argparse
+import mimetypes
+import time
 import requests
 import json
 from jinja2 import Template
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 
 def slugify(text):
@@ -98,59 +101,104 @@ def get_recipe_details(base_url, api_key, recipe_id):
         return None
 
 
-def fetch_images(base_url, api_key, recipes):
-    """Fetch images for recipes where the image field is an ID rather than a URL."""
-    from urllib.parse import urlparse
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".svg", ".bmp"}
 
+
+def sanitize_image_filename(name):
+    """Create a filesystem-safe filename stem for a recipe image."""
+    sanitized_name = "".join(
+        c for c in (name or "") if c.isalnum() or c in (" ", "-", "_")
+    ).rstrip()
+    return sanitized_name or "unnamed_recipe"
+
+
+def get_image_extension(url, content_type):
+    """Pick an extension from the image URL, falling back to the content type."""
+    suffix = Path(unquote(urlparse(url).path)).suffix.lower()
+    if suffix in IMAGE_EXTENSIONS:
+        return suffix
+
+    if content_type:
+        guessed = mimetypes.guess_extension(content_type.split(";", 1)[0].strip())
+        if guessed:
+            return ".jpg" if guessed == ".jpe" else guessed
+
+    return ".webp"
+
+
+def fetch_images(base_url, api_key, recipes):
+    """Download every recipe image locally and point the recipe at that copy."""
     # Determine the parent directory (where the script's parent directory is)
     script_dir = Path(__file__).parent
     parent_dir = script_dir.parent
 
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    base = urlparse(base_url)
+    auth_headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    user_agent = (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+    )
 
     for recipe in recipes:
         image_value = recipe.get("image")
-        if image_value:
-            # Check if image_value is a URL by checking if it has a scheme
-            parsed = urlparse(image_value)
-            if not parsed.scheme:  # If it's not a URL, treat it as an ID
-                # Use the recipe's actual ID instead of the image value
-                recipe_id = recipe.get(
-                    "id", image_value
-                )  # Use recipe ID if available, otherwise use image value
-                image_url = (
-                    f"{base_url}/api/media/recipes/{recipe_id}/images/min-original.webp"
-                )
+        if not image_value:
+            continue
 
-                try:
-                    response = requests.get(image_url, headers=headers)
-                    response.raise_for_status()
+        parsed = urlparse(image_value)
+        if parsed.scheme in ("http", "https") or parsed.netloc:
+            image_url = image_value
+            if image_url.startswith("//"):
+                image_url = f"{base.scheme}:{image_url}"
+        elif image_value.startswith("/"):
+            # A path relative to the Mealie instance.
+            image_url = f"{base_url.rstrip('/')}{image_value}"
+        else:
+            # Mealie returns an image ID for locally uploaded images.
+            recipe_id = recipe.get("id", image_value)
+            image_url = (
+                f"{base_url.rstrip('/')}/api/media/recipes/{recipe_id}"
+                "/images/min-original.webp"
+            )
 
-                    # Create a filename based on the recipe name
-                    recipe_name = recipe.get("name", "unnamed_recipe")
-                    # Sanitize the recipe name for use as a filename
-                    sanitized_name = "".join(
-                        c for c in recipe_name if c.isalnum() or c in (" ", "-", "_")
-                    ).rstrip()
-                    if not sanitized_name:
-                        sanitized_name = "unnamed_recipe"
+        # Only send the API key to the Mealie instance, never to external image hosts.
+        image_parsed = urlparse(image_url)
+        headers = {"User-Agent": user_agent}
+        if (image_parsed.scheme, image_parsed.netloc) == (base.scheme, base.netloc):
+            headers.update(auth_headers)
 
-                    # Save images in the parent directory (top level)
-                    filename = parent_dir / f"{sanitized_name}.webp"
+        response = None
+        last_error = None
+        for attempt in range(3):
+            try:
+                response = requests.get(image_url, headers=headers, timeout=60)
+                response.raise_for_status()
+                break
+            except requests.exceptions.RequestException as e:
+                last_error = e
+                if attempt < 2:
+                    time.sleep(1 + attempt)
+        else:
+            print(
+                f"Error fetching image for recipe '{recipe.get('name', 'Unknown Recipe')}': {last_error}"
+            )
+            if last_error.response is not None:
+                print(f"Status code: {last_error.response.status_code}")
+            continue
 
-                    with open(filename, "wb") as f:
-                        f.write(response.content)
+        filename = parent_dir / (
+            sanitize_image_filename(recipe.get("name"))
+            + get_image_extension(image_url, response.headers.get("Content-Type"))
+        )
+        with open(filename, "wb") as f:
+            f.write(response.content)
 
-                    # Update the recipe's image field to point to the local file (relative to index.html)
-                    recipe["image"] = f"{sanitized_name}.webp"
-                    print(f"Downloaded image for recipe '{recipe_name}' -> {filename}")
-
-                except requests.exceptions.RequestException as e:
-                    print(
-                        f"Error fetching image for recipe '{recipe.get('name', 'Unknown Recipe')}': {e}"
-                    )
-                    if e.response is not None:
-                        print(f"Status code: {e.response.status_code}")
+        # Store just the filename. index.html resolves it relative to the parent
+        # directory, and recipes/*.html prefix it with "../".
+        recipe["image"] = filename.name
+        print(f"Downloaded image for recipe '{recipe.get('name', 'Unknown Recipe')}' -> {filename}")
 
 
 def generate_html_report(recipes, output_file=None):
