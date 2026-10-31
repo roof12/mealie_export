@@ -9,6 +9,7 @@
             color-scheme: light dark;
             --bg: #f5f1ea;
             --surface: #fffdf8;
+            --surface-alt: #f3ede4;
             --text: #24211d;
             --muted: #665c51;
             --border: #ddd3c6;
@@ -39,6 +40,26 @@
             color: var(--text);
             letter-spacing: -0.02em;
             font-size: 1.6rem;
+        }
+        .favorite-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            margin-left: 0.4em;
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-alt);
+            color: var(--link);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+        .favorite-badge::before {
+            content: "★";
+            font-size: 0.9em;
         }
         .recipe-image {
             display: block;
@@ -83,6 +104,7 @@
         body.dark-mode {
             --bg: #14110f;
             --surface: #1c1815;
+            --surface-alt: #25201b;
             --text: #f4ece2;
             --muted: #c5b8ab;
             --border: #3a3028;
@@ -149,7 +171,7 @@
                 <a href="../index.html">Home</a>
             </nav>
         </div>
-        <h2 class="recipe-title">Peanut Butter-Miso Cookies</h2>
+        <h2 class="recipe-title">Peanut Butter-Miso Cookies <span class="favorite-badge">Favorite</span></h2>
         
         <img src="../Peanut Butter-Miso Cookies.jpg" alt="Peanut Butter-Miso Cookies" class="recipe-image">
         

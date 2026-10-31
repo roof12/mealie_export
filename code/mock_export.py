@@ -19,6 +19,7 @@ def main():
             "name": "Test Pancake",
             "image": "test-pancake.webp",
             "description": "Delicious mock pancakes",
+            "isFavorite": True,
             "recipeIngredient": [
                 {"display": "Flour"},
                 {"display": "Milk"},

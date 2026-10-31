@@ -157,6 +157,25 @@
             margin: 0 0 16px;
             font-size: 1.25rem;
         }
+        .favorite-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 2px 9px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-alt);
+            color: var(--link);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+        .favorite-badge::before {
+            content: "★";
+            font-size: 0.9em;
+        }
 
         /* Dark mode styles */
         body.dark-mode {
@@ -266,10 +285,16 @@
             </nav>
         </div>
         {% set total_recipes = recipes | length %}
-        {% set hero_count = [2, total_recipes] | min %}
+        {% set favorite_indices = [] %}
+        {% for recipe in recipes %}
+            {% if recipe.isFavorite %}
+                {% set _ = favorite_indices.append(loop.index0) %}
+            {% endif %}
+        {% endfor %}
+        {% set hero_count = [2, favorite_indices | length] | min %}
         {% set hero = namespace(indices=[]) %}
         {% for _ in range(hero_count) %}
-            {% set candidates = range(total_recipes) | reject('in', hero.indices) | list %}
+            {% set candidates = favorite_indices | reject('in', hero.indices) | list %}
             {% set hero.indices = hero.indices + [candidates | random] %}
         {% endfor %}
 
@@ -287,6 +312,9 @@
                         {% endif %}
                         <div class="hero-body">
                             <h2>{{ recipe.name or 'Unnamed Recipe' }}</h2>
+                            {% if recipe.isFavorite %}
+                            <span class="favorite-badge">Favorite</span>
+                            {% endif %}
                             {% if recipe.description %}
                             <p class="description">{{ recipe.description }}</p>
                             {% endif %}
@@ -309,6 +337,9 @@
             {% set recipe_id = (recipe.name or 'unnamed-recipe') | lower | replace(' ', '-') | replace('_', '-') %}
         <div class="recipe" id="{{ recipe_id }}">
             <h2><a href="recipes/{{ recipe_id }}.html">{{ recipe.name or 'Unnamed Recipe' }}</a></h2>
+            {% if recipe.isFavorite %}
+            <span class="favorite-badge">Favorite</span>
+            {% endif %}
             {% if recipe.description %}
             <div class="description">{{ recipe.description }}</div>
             {% endif %}

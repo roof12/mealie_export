@@ -89,6 +89,51 @@ def get_recipes(base_url, api_key):
     return fetch_all_recipes(base_url, api_key)
 
 
+def fetch_favorite_recipe_ids(base_url, api_key):
+    """Return the IDs of the logged-in user's favorite recipes.
+
+    Favorites are user-specific in Mealie, so they are not part of the recipe
+    summary. Older Mealie versions may not expose this endpoint; in that case
+    we simply treat every recipe as non-favorite.
+    """
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    try:
+        response = requests.get(
+            f"{base_url}/api/users/self/favorites", headers=headers, timeout=30
+        )
+        response.raise_for_status()
+        data = response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Could not fetch favorite recipes (continuing without them): {e}")
+        return set()
+
+    # Mealie returns {"ratings": [{"recipeId": ..., "isFavorite": true}, ...]}.
+    # Be tolerant of older/newer shapes that return a bare list.
+    entries = data.get("ratings", data) if isinstance(data, dict) else data
+    if not isinstance(entries, list):
+        return set()
+
+    favorite_ids = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        if not entry.get("isFavorite", entry.get("is_favorite", True)):
+            continue
+        recipe_id = (
+            entry.get("recipeId") or entry.get("recipe_id") or entry.get("id")
+        )
+        if recipe_id:
+            favorite_ids.add(str(recipe_id))
+
+    return favorite_ids
+
+
+def annotate_favorite_recipes(recipes, favorite_ids):
+    """Mark recipe summaries with an isFavorite flag."""
+    for recipe in recipes:
+        recipe["isFavorite"] = str(recipe.get("id")) in favorite_ids
+
+
 def get_recipe_details(base_url, api_key, recipe_id):
     """Fetch detailed information for a specific recipe."""
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
@@ -246,6 +291,10 @@ def main():
     recipes = get_recipes(base_url, api_key)
     print(f"Fetched {len(recipes)} recipes from Mealie API")
 
+    favorite_ids = fetch_favorite_recipe_ids(base_url, api_key)
+    annotate_favorite_recipes(recipes, favorite_ids)
+    print(f"Found {len(favorite_ids)} favorite recipes")
+
     # Fetch images for recipes where image field is an ID
     fetch_images(base_url, api_key, recipes)
 
@@ -269,6 +318,7 @@ def main():
         details = get_recipe_details(base_url, api_key, recipe_id)
         if details:
             details["image"] = recipe.get("image", "")
+            details["isFavorite"] = recipe.get("isFavorite", False)
             html_content = recipe_template.render(recipe=details)
             slug = slugify(recipe_name)
             output_file = recipes_dir / f"{slug}.html"
